@@ -1,8 +1,12 @@
+<!-- WXML 文件 -->
 <view class="container">
   <!-- 第一组卡片 -->
   <view class="card-container">
     <!-- 左卡片 -->
-    <view class="card left-card" style="background-color: #ffebee;" bindtap="handleCardTap" data-card="temperature">
+    <view class="card left-card {{activeCard === 'temperature' ? 'card-active' : ''}}" 
+          style="background-color: #ffebee;" 
+          bindtap="handleCardTap" 
+          data-card="temperature">
       <view class="card-header">
         <text class="card-title">温度</text>
         <text class="card-value">25.4°C</text>
@@ -12,7 +16,10 @@
       </view>
     </view>
     <!-- 右卡片 -->
-    <view class="card right-card" style="background-color: #fff3e0;" bindtap="handleCardTap" data-card="humidity">
+    <view class="card right-card {{activeCard === 'humidity' ? 'card-active' : ''}}" 
+          style="background-color: #fff3e0;" 
+          bindtap="handleCardTap" 
+          data-card="humidity">
       <view class="card-header">
         <text class="card-title">环境湿度</text>
         <text class="card-value">65%</text>
@@ -26,7 +33,10 @@
   <!-- 第二组卡片 -->
   <view class="card-container">
     <!-- 左卡片 -->
-    <view class="card left-card" style="background-color: #fff9c4;" bindtap="handleCardTap" data-card="soilMoisture">
+    <view class="card left-card {{activeCard === 'soilMoisture' ? 'card-active' : ''}}" 
+          style="background-color: #fff9c4;" 
+          bindtap="handleCardTap" 
+          data-card="soilMoisture">
       <view class="card-header">
         <text class="card-title">土壤湿度</text>
         <text class="card-value">78%</text>
@@ -36,7 +46,10 @@
       </view>
     </view>
     <!-- 右卡片 -->
-    <view class="card right-card" style="background-color: #e8f5e9;" bindtap="handleCardTap" data-card="lightIntensity">
+    <view class="card right-card {{activeCard === 'lightIntensity' ? 'card-active' : ''}}" 
+          style="background-color: #e8f5e9;" 
+          bindtap="handleCardTap" 
+          data-card="lightIntensity">
       <view class="card-header">
         <text class="card-title">光照强度</text>
         <text class="card-value">850lx</text>
@@ -50,7 +63,10 @@
   <!-- 第三组卡片 -->
   <view class="card-container">
     <!-- 左卡片 -->
-    <view class="card left-card" style="background-color: #e3f2fd;" bindtap="handleCardTap" data-card="co2">
+    <view class="card left-card {{activeCard === 'co2' ? 'card-active' : ''}}" 
+          style="background-color: #e3f2fd;" 
+          bindtap="handleCardTap" 
+          data-card="co2">
       <view class="card-header">
         <text class="card-title">CO₂浓度</text>
         <text class="card-value">420ppm</text>
@@ -60,7 +76,10 @@
       </view>
     </view>
     <!-- 右卡片 -->
-    <view class="card right-card" style="background-color: #e8eaf6;" bindtap="handleCardTap" data-card="fanSpeed">
+    <view class="card right-card {{activeCard === 'fanSpeed' ? 'card-active' : ''}}" 
+          style="background-color: #e8eaf6;" 
+          bindtap="handleCardTap" 
+          data-card="fanSpeed">
       <view class="card-header">
         <text class="card-title">风扇强度</text>
         <text class="card-value">3档</text>
