@@ -1,0 +1,105 @@
+/* 容器样式，用于布局 */
+.container {
+  display: flex;
+  flex-direction: column; /* 垂直排列 */
+  padding: 20px; /* 内边距 */
+  margin-top: 100px; /* 卡片整体下移 */
+}
+
+/* 卡片容器样式 */
+.card-container {
+  display: flex;
+  justify-content: space-between; /* 左右卡片分开 */
+  width: 100%; /* 宽度占满父容器 */
+  margin-bottom: 30px; /* 每组卡片之间的间距 */
+}
+
+/* 卡片通用样式 */
+.card {
+  width: 170px; /* 卡片宽度 */
+  height: 110px; /* 卡片高度 */
+  border-radius: 10px; /* 圆角 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 淡淡阴影 */
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease; /* 缩放动画过渡效果 */
+}
+
+/* 卡片头部布局 */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+/* 卡片标题样式 */
+.card-title {
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* 卡片数值样式 */
+.card-value {
+  font-size: 18px;
+  color: #FF5722;
+  font-weight: bold;
+}
+
+/* 进度条容器 */
+.progress-container {
+  width: 100%;
+  height: 12px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  margin-top: auto;
+  overflow: hidden;
+}
+
+/* 进度条 */
+.progress-bar {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.5s ease;
+}
+
+/* 左卡片样式 */
+.left-card {
+  margin-right: 5px;
+}
+
+/* 右卡片样式 */
+.right-card {
+  margin-left: 5px;
+}
+
+/* 大卡片样式 */
+.large-card {
+  width: 100%;
+  height: 180px;
+  background-color: #e6f7ff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0px;
+}
+
+/* 大卡片文字样式 */
+.large-card-text {
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+}
+
+/* 卡片放大效果的样式类 */
+.card-active {
+  transform: scale(1.5);
+  z-index: 999;
+}
