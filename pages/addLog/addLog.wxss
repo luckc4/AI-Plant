@@ -1,0 +1,55 @@
+/* addLog.wxss */
+.page-container {
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #eee;
+}
+
+.back-arrow {
+  font-size: 40rpx;
+  color: #333;
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.save-btn {
+  background-color: #6eb05a;
+  color: #fff;
+  padding: 15rpx 30rpx;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+}
+
+.input-container {
+  flex: 1;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+
+.input-area {
+  width: 100%;
+  height: 100%;
+  font-size: 32rpx;
+  line-height: 1.5;
+  color: #333;
+  box-sizing: border-box;
+  padding: 20rpx;
+  border: 1rpx solid #eee;
+  border-radius: 8rpx;
+}

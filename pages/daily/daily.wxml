@@ -1,2 +1,19 @@
-<!--pages/daily/daily.wxml-->
-<text>1</text>
+<!-- daily.wxml -->
+<view class="container">
+  <view class="title">植物生长日志</view>
+  
+  <!-- Empty state with large plus button -->
+  <view class="empty-state" wx:if="{{showEmptyState}}">
+    <view class="add-button" bindtap="addNewLog">+</view>
+  </view>
+  
+  <!-- Logs list -->
+  <scroll-view scroll-y="true" class="logs-container" wx:else>
+    <view class="add-button-small" bindtap="addNewLog">+</view>
+    <view class="log-item" wx:for="{{logs}}" wx:key="index">
+      <view class="log-date">{{item.date}} {{item.time}}</view>
+      <view class="divider"></view>
+      <view class="log-content">{{item.content.length > 15 ? item.content.substring(0, 15) : item.content}}</view>
+    </view>
+  </scroll-view>
+</view>

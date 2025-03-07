@@ -1,0 +1,19 @@
+<!-- addLog.wxml -->
+<view class="page-container">
+  <view class="header">
+    <view class="back-arrow" bindtap="goBack">←</view>
+    <view class="save-btn" bindtap="saveLog">保存</view>
+  </view>
+  
+  <view class="input-container">
+    <textarea 
+      class="input-area" 
+      placeholder="请输入日志" 
+      placeholder-style="color: rgba(0, 0, 0, 0.3);"
+      bindinput="onInputChange"
+      value="{{content}}"
+      auto-focus="true"
+      maxlength="-1"
+    ></textarea>
+  </view>
+</view>

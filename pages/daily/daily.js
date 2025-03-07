@@ -1,66 +1,43 @@
-// pages/daily/daily.js
+// daily.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    logs: [],
+    showEmptyState: true
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  onLoad: function() {
+    this.loadLogs();
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
+  onShow: function() {
+    this.loadLogs();
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
+  // Load logs from storage
+  loadLogs: function() {
+    const that = this;
+    wx.getStorage({
+      key: 'logs',
+      success: function(res) {
+        const logs = res.data || [];
+        that.setData({
+          logs: logs,
+          showEmptyState: logs.length === 0
+        });
+      },
+      fail: function() {
+        that.setData({
+          logs: [],
+          showEmptyState: true
+        });
+      }
+    });
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  // Navigate to log entry page
+  addNewLog: function() {
+    wx.navigateTo({
+      url: '/pages/addLog/addLog'
+    });
   }
 })

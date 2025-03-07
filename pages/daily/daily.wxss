@@ -1,1 +1,87 @@
-/* pages/daily/daily.wxss */
+/* daily.wxss */
+.container {
+  padding: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-top: 40rpx;
+  margin-bottom: 60rpx;
+  text-align: center;
+}
+
+.empty-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.add-button {
+  width: 120rpx;
+  height: 120rpx;
+  background-color: #f8f8f8;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 80rpx;
+  color: #6eb05a;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.add-button-small {
+  width: 80rpx;
+  height: 80rpx;
+  background-color: #f8f8f8;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60rpx;
+  color: #6eb05a;
+  margin-bottom: 20rpx;
+  align-self: center;
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.logs-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.log-item {
+  width: 340px;
+  height: 100px;
+  background-color: #f8f8f8;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.log-date {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.divider {
+  height: 2rpx;
+  background-color: #ddd;
+  margin: 16rpx 0;
+  border-style: dashed;
+}
+
+.log-content {
+  font-size: 28rpx;
+  color: #666;
+}
