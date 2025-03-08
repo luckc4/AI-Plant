@@ -1,10 +1,80 @@
-/**index.wxss**/
-page {
+/* index.wxss - 文章式布局样式（可滚动） */
+.container {
+  font-family: 'PingFang SC', 'Helvetica Neue', sans-serif;
+  background-color: #ffffff;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
+  width: 100%;
 }
-.scrollarea {
-  flex: 1;
-  overflow-y: hidden;
+
+/* 轮播图样式 */
+.banner {
+  width: 100%;
+  height: 420rpx;
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+}
+
+/* Logo区域样式 */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin: 30rpx 0;
+  padding: 0 30rpx;
+}
+
+.logo-image {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+/* 文章标题样式 */
+.article-title {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #333333;
+  padding: 10rpx 30rpx 30rpx;
+  text-align: center;
+}
+
+/* 文章内容样式 */
+.article-content {
+  padding: 0 30rpx 60rpx; /* 底部增加padding，确保内容在手机屏幕上可以完全滚动显示 */
+}
+
+.feature-section {
+  margin-bottom: 40rpx;
+}
+
+.feature-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 16rpx;
+}
+
+.feature-text {
+  font-size: 30rpx;
+  color: #333333;
+  line-height: 1.7;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.check-item {
+  margin-top: 10rpx;
+}
+
+/* 底部文字样式 */
+.footer-text {
+  font-size: 30rpx;
+  color: #333333;
+  line-height: 1.7;
+  text-align: center;
+  margin-top: 60rpx;
+  font-weight: bold;
 }

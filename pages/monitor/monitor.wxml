@@ -1,3 +1,4 @@
+<scroll-view scroll-y="true" class="container">
 <!-- WXML 文件 -->
 <view class="container">
   <!-- 第一组卡片 -->
@@ -6,7 +7,7 @@
     <view class="card left-card {{activeCard === 'temperature' ? 'card-active' : ''}}" 
           style="background-color: #ffebee;" 
           bindtap="handleCardTap" 
-          data-card="temperature">
+          data-card="temperature">    
       <view class="card-header">
         <text class="card-title">温度</text>
         <text class="card-value">25.4°C</text>
@@ -95,3 +96,4 @@
     <text class="large-card-text">点击查看图片</text>
   </view>
 </view>
+</scroll-view>
