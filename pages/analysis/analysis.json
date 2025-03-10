@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "agent-ui":"/components/agent-ui/index"
+  },
+  "enablePullDownRefresh": true
 }

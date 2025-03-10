@@ -1,2 +1,3 @@
-<!--pages/analysis/analysis.wxml-->
-<text>pages/analysis/analysis.wxml</text>
+<view>
+  <agent-ui agentConfig="{{agentConfig}}" showBotAvatar="{{true}}"></agent-ui>
+</view>
