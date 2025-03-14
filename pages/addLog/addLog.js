@@ -1,7 +1,23 @@
 // addLog.js
 Page({
   data: {
-    content: ''
+    content: '',
+    isEdit: false,
+    editIndex: -1,
+    date: '',
+    time: ''
+  },
+
+  onLoad: function(options) {
+    if (options.content) {
+      this.setData({
+        content: decodeURIComponent(options.content),
+        isEdit: true,
+        editIndex: parseInt(options.index),
+        date: options.date,
+        time: options.time
+      });
+    }
   },
 
   // 输入内容改变时触发
@@ -23,6 +39,42 @@ Page({
       return;
     }
 
+    const that = this;
+    
+    // 如果是编辑模式
+    if (this.data.isEdit) {
+      wx.getStorage({
+        key: 'logs',
+        success: function(res) {
+          const logs = res.data || [];
+          // 更新日志内容，保持时间不变
+          logs[that.data.editIndex].content = that.data.content;
+          
+          // 保存到缓存
+          wx.setStorage({
+            key: 'logs',
+            data: logs,
+            success: function() {
+              // 保存为JSON文件
+              that.saveAsJson(logs);
+              
+              wx.showToast({
+                title: '更新成功',
+                icon: 'none',
+                duration: 1000
+              });
+              
+              setTimeout(function() {
+                wx.navigateBack();
+              }, 1000);
+            }
+          });
+        }
+      });
+      return;
+    }
+
+    // 新建日志模式
     // 获取当前时间
     const now = new Date();
     const year = now.getFullYear();
@@ -42,7 +94,6 @@ Page({
     };
 
     // 获取已有日志并添加新日志
-    const that = this;
     wx.getStorage({
       key: 'logs',
       success: function(res) {
@@ -132,26 +183,12 @@ Page({
         content: '您还没有保存日志，确定要返回吗？',
         success: function(res) {
           if (res.confirm) {
-            wx.showToast({
-              title: '记录失败',
-              icon: 'none',
-              duration: 1000
-            });
-            setTimeout(function() {
-              wx.navigateBack();
-            }, 1000);
+            wx.navigateBack();
           }
         }
       });
     } else {
-      wx.showToast({
-        title: '记录失败',
-        icon: 'none',
-        duration: 1000
-      });
-      setTimeout(function() {
-        wx.navigateBack();
-      }, 1000);
+      wx.navigateBack();
     }
   }
-})
+});

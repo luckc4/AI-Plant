@@ -4,14 +4,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .title {
   font-size: 36rpx;
   font-weight: bold;
   margin-top: 40rpx;
-  margin-bottom: 60rpx;
+  margin-bottom: 30rpx;
   text-align: center;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10rpx 30rpx;
+  border-radius: 10rpx;
 }
 
 .empty-state {
@@ -24,7 +30,7 @@
 .add-button {
   width: 120rpx;
   height: 120rpx;
-  background-color: #f8f8f8;
+  background-color: rgba(248, 248, 248, 0.9);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -37,7 +43,7 @@
 .add-button-small {
   width: 80rpx;
   height: 80rpx;
-  background-color: #f8f8f8;
+  background-color: rgba(248, 248, 248, 0.9);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -54,12 +60,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 30rpx;
+  margin-top: -20rpx;
 }
 
 .log-item {
   width: 340px;
   height: 100px;
-  background-color: #f8f8f8;
+  background-color: rgba(248, 248, 248, 0.9);
   border-radius: 20rpx;
   margin-bottom: 20rpx;
   padding: 20rpx;
@@ -75,10 +83,11 @@
 }
 
 .divider {
-  height: 2rpx;
+  height: 1rpx;
   background-color: #ddd;
   margin: 16rpx 0;
-  border-style: dashed;
+  border-top: 1rpx dashed #ddd;
+  background: none;
 }
 
 .log-content {

@@ -1,99 +1,67 @@
-<scroll-view scroll-y="true" class="container">
-<!-- WXML 文件 -->
-<view class="container">
-  <!-- 第一组卡片 -->
-  <view class="card-container">
-    <!-- 左卡片 -->
-    <view class="card left-card {{activeCard === 'temperature' ? 'card-active' : ''}}" 
-          style="background-color: #ffebee;" 
-          bindtap="handleCardTap" 
-          data-card="temperature">    
-      <view class="card-header">
-        <text class="card-title">温度</text>
-        <text class="card-value">25.4°C</text>
-      </view>
-      <view class="progress-container">
-        <view class="progress-bar" style="width: 70%; background-color: #FF7043;"></view>
-      </view>
+<view
+    class="container"
+    style="background-image: url('../../images/background.png'); height: {{windowHeight}}px; width: {{windowWidth}}px;"
+>
+    <view class="page-title">环境监测数据</view>
+    <view class="button-sp-are">
+        <button
+            class="data-card {{activeCard === 'temperature' ? 'active' : ''}}"
+            bindtap="onCardTap"
+            data-type="temperature"
+            size="mini"
+        >
+            温度：{{temperature}}℃
+        </button>
+        <button
+            class="data-card {{activeCard === 'humidity' ? 'active' : ''}}"
+            bindtap="onCardTap"
+            data-type="humidity"
+            size="mini"
+        >
+            湿度：{{humidity}}℃
+        </button>
+        <button
+            class="data-card {{activeCard === 'co2' ? 'active' : ''}}"
+            bindtap="onCardTap"
+            data-type="co2"
+            size="mini"
+        >
+            CO₂浓度：{{co2}} ppm
+        </button>
+        <button
+            class="data-card {{activeCard === 'soilMoisture' ? 'active' : ''}}"
+            bindtap="onCardTap"
+            data-type="soilMoisture"
+            size="mini"
+        >
+            土壤湿度：{{soilMoisture}}%
+        </button>
+        <button
+            class="data-card {{activeCard === 'lightIntensity' ? 'active' : ''}}"
+            bindtap="onCardTap"
+            data-type="lightIntensity"
+            size="mini"
+        >
+            光照强度：{{lightIntensity}} lux
+        </button>
+        <button
+            class="data-card {{activeCard === 'fanSpeed' ? 'active' : ''}}"
+            bindtap="onCardTap"
+            data-type="fanSpeed"
+            size="mini"
+        >
+            风扇强度：{{fanSpeed}}%
+        </button>
     </view>
-    <!-- 右卡片 -->
-    <view class="card right-card {{activeCard === 'humidity' ? 'card-active' : ''}}" 
-          style="background-color: #fff3e0;" 
-          bindtap="handleCardTap" 
-          data-card="humidity">
-      <view class="card-header">
-        <text class="card-title">环境湿度</text>
-        <text class="card-value">65%</text>
-      </view>
-      <view class="progress-container">
-        <view class="progress-bar" style="width: 65%; background-color: #FFB74D;"></view>
-      </view>
-    </view>
-  </view>
-  
-  <!-- 第二组卡片 -->
-  <view class="card-container">
-    <!-- 左卡片 -->
-    <view class="card left-card {{activeCard === 'soilMoisture' ? 'card-active' : ''}}" 
-          style="background-color: #fff9c4;" 
-          bindtap="handleCardTap" 
-          data-card="soilMoisture">
-      <view class="card-header">
-        <text class="card-title">土壤湿度</text>
-        <text class="card-value">78%</text>
-      </view>
-      <view class="progress-container">
-        <view class="progress-bar" style="width: 78%; background-color: #FFEE58;"></view>
-      </view>
-    </view>
-    <!-- 右卡片 -->
-    <view class="card right-card {{activeCard === 'lightIntensity' ? 'card-active' : ''}}" 
-          style="background-color: #e8f5e9;" 
-          bindtap="handleCardTap" 
-          data-card="lightIntensity">
-      <view class="card-header">
-        <text class="card-title">光照强度</text>
-        <text class="card-value">850lx</text>
-      </view>
-      <view class="progress-container">
-        <view class="progress-bar" style="width: 50%; background-color: #66BB6A;"></view>
-      </view>
-    </view>
-  </view>
-  
-  <!-- 第三组卡片 -->
-  <view class="card-container">
-    <!-- 左卡片 -->
-    <view class="card left-card {{activeCard === 'co2' ? 'card-active' : ''}}" 
-          style="background-color: #e3f2fd;" 
-          bindtap="handleCardTap" 
-          data-card="co2">
-      <view class="card-header">
-        <text class="card-title">CO₂浓度</text>
-        <text class="card-value">420ppm</text>
-      </view>
-      <view class="progress-container">
-        <view class="progress-bar" style="width: 42%; background-color: #42A5F5;"></view>
-      </view>
-    </view>
-    <!-- 右卡片 -->
-    <view class="card right-card {{activeCard === 'fanSpeed' ? 'card-active' : ''}}" 
-          style="background-color: #e8eaf6;" 
-          bindtap="handleCardTap" 
-          data-card="fanSpeed">
-      <view class="card-header">
-        <text class="card-title">风扇强度</text>
-        <text class="card-value">3档</text>
-      </view>
-      <view class="progress-container">
-        <view class="progress-bar" style="width: 60%; background-color: #5C6BC0;"></view>
-      </view>
-    </view>
-  </view>
-  
-  <!-- 大卡片 -->
-  <view class="large-card" bindtap="handleLargeCardTap">
-    <text class="large-card-text">点击查看图片</text>
-  </view>
 </view>
-</scroll-view>
+
+<!--  发布数据格式
+{
+  "currentTemperature": 1,
+  "humidity": 2,
+  "co2": 3,
+  "soilMoisture": 4,
+  "lightIntensity": 5,
+  "fanSpeed": 6
+}
+  -->

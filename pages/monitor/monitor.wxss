@@ -1,120 +1,85 @@
-/* 容器样式，用于布局 */
+page {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 .container {
-  display: flex;
-  flex-direction: column; /* 垂直排列 */
-  padding: 20px; /* 内边距 */
-  margin-top: 100px; /* 卡片整体下移 */
-}
-
-/* 卡片容器样式 */
-.card-container {
-  display: flex;
-  justify-content: space-between; /* 左右卡片分开 */
-  width: 100%; /* 宽度占满父容器 */
-  margin-bottom: 30px; /* 每组卡片之间的间距 */
-  overflow: visible; /* 允许卡片溢出容器 */
-  position: relative; /* 确保z-index生效 */
-}
-
-/* 卡片通用样式 */
-.card {
-  width: 170px; /* 卡片宽度 */
-  height: 120px; /* 卡片高度 */
-  border-radius: 10px; /* 圆角 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 淡淡阴影 */
+  min-height: 100vh;
+  width: 100vw;
+  background-size: 100% 100% !important;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
   display: flex;
   flex-direction: column;
-  padding: 15px;
-  box-sizing: border-box;
-  transition: all 0.3s ease; /* 添加所有属性的过渡效果 */
-}
-
-/* 卡片头部布局 */
-.card-header {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding-bottom: 15px;
-  margin-bottom: 15px;
+  justify-content: flex-start;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding-bottom: 30px;
 }
 
-/* 卡片标题样式 */
-.card-title {
-  font-size: 14px;
+button{
+  margin:25px;
+  font-size:10px;
+  width:80%;
+}
+.userinfo-nickname{
+  color :#aaa;
+}
+.button-sp-are {
+  margin: 0 auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.button-sp-are button {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: rgba(245, 245, 245, 0.8);
   color: #333;
-  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  text-align: center;
+  transition: all 0.3s ease;
 }
 
-/* 卡片数值样式 */
-.card-value {
-  font-size: 18px;
-  color: #FF5722;
-  font-weight: bold;
-}
-
-/* 进度条容器 */
-.progress-container {
-  width: 100%;
-  height: 12px;
-  background-color: rgba(0, 0, 0, 0.05);
-  border-radius: 6px;
-  margin-top: auto;
-  overflow: hidden;
-}
-
-/* 进度条 */
-.progress-bar {
-  height: 100%;
-  border-radius: 6px;
-  transition: width 0.5s ease;
-}
-
-/* 左卡片样式 */
-.left-card {
-  margin-right: 5px;
-}
-
-/* 右卡片样式 */
-.right-card {
-  margin-left: 5px;
-}
-
-/* 卡片放大效果的样式类 - 通用设置 */
-.card-active {
-  z-index: 999; /* 确保放大的卡片在最上层 */
-  position: relative; /* 相对定位以支持z-index */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* 放大时增强阴影效果 */
-}
-
-/* 左侧卡片放大效果 - 向右偏移 */
-.left-card.card-active {
-  transform: scale(1.5) translateX(20%); /* 放大并向右移动 */
-  transform-origin: center; /* 从中心点放大 */
-}
-
-/* 右侧卡片放大效果 - 向左偏移 */
-.right-card.card-active {
-  transform: scale(1.5) translateX(-20%); /* 放大并向左移动 */
-  transform-origin: center; /* 从中心点放大 */
-}
-
-/* 大卡片样式 */
-.large-card {
-  width: 100%;
-  height: 150px;
-  background-color: #e6f7ff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.data-card {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 0px;
+  width: 80% !important;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* 大卡片文字样式 */
-.large-card-text {
-  font-size: 18px;
-  color: #333;
-  font-weight: bold;
+.data-card.active {
+  transform: scale(1.5);
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
 }
+
+.page-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 20px 0;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 10px;
+  border-radius: 10px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.weui-btn{margin-top:50px}
