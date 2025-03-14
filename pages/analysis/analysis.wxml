@@ -1,3 +1,6 @@
-<view>
-  <agent-ui agentConfig="{{agentConfig}}" showBotAvatar="{{true}}"></agent-ui>
+<view class="container">
+  <image class="background-image" src="/images/back4.jpg" mode="aspectFill"></image>
+  <view class="content">
+    <agent-ui agentConfig="{{agentConfig}}" showBotAvatar="{{true}}"></agent-ui>
+  </view>
 </view>

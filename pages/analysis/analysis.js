@@ -4,6 +4,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    
+    
     agentConfig: {
       type: "bot", // 值为'bot'或'model'。当type='bot'时，botId必填；当type='model'时，modelName和model必填
       botId: "bot-2ce669c4", // agent id

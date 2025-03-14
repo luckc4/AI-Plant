@@ -161,6 +161,7 @@ Page({
     
     const fs = wx.getFileSystemManager();
     const filePath = `${wx.env.USER_DATA_PATH}/log.json`;
+    // 日志位置 C:\Users\Zhao\AppData\Local\微信开发者工具\User Data\eaaa0d18cc7146ef72d12a979e425647\WeappSimulator\WeappFileSystem\o6zAJs8wGQ_X83t0LCOO0jjxMTYg\wxfe0ef9c05ca14c4f\usr\log.json
     
     fs.writeFile({
       filePath: filePath,

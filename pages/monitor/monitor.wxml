@@ -1,6 +1,6 @@
 <view
     class="container"
-    style="background-image: url('../../images/background.png'); height: {{windowHeight}}px; width: {{windowWidth}}px;"
+    style="background-image: url('../../images/background.jpg'); height: {{windowHeight}}px; width: {{windowWidth}}px;"
 >
     <view class="page-title">环境监测数据</view>
     <view class="button-sp-are">
