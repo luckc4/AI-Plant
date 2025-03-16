@@ -11,7 +11,7 @@
   </view>
   
   <!-- Logs list -->
-  <scroll-view scroll-y="true" class="logs-container" wx:else>
+  <scroll-view scroll-y="true" class="logs-container" wx:else enhanced="true" show-scrollbar="true" bounces="true">
     <view class="add-button-small" bindtap="addNewLog">+</view>
     <view class="log-item" wx:for="{{logs}}" wx:key="index" bindtap="editLog" data-index="{{index}}">
       <view class="log-header">

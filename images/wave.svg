@@ -1,0 +1,6 @@
+<?xml version="1.0" standalone="no"?>
+<svg class="wave" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>Wave</title>
+    <defs></defs>
+    <path id="wave" d="M 0 50 C 180 20, 180 80, 360 50 C 540 20, 540 80, 720 50 C 900 20, 900 80, 1080 50 L 1080 100 L 0 100 Z" fill="#ffffff" />
+</svg> 

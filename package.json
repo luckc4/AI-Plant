@@ -1,0 +1,23 @@
+{
+  "name": "ai-plant",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/luckc4/AI-Plant#readme",
+  "bugs": {
+    "url": "https://github.com/luckc4/AI-Plant/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luckc4/AI-Plant.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "qweather-icons": "^1.6.0"
+  }
+}
