@@ -33,7 +33,7 @@
         <block wx:for="{{hourly}}" wx:key="index">
           <view class="item hourly">
             <view class="text-gray">{{item.time}}</view>
-            <image class="icon" src="/node_modules/qweather-icons/icons/{{now.icon}}.svg"></image>
+            <image class="icon" src="/node_modules/qweather-icons/icons/{{item.icon}}.svg"></image>
             <view class="text-primary mb-32">{{item.temp}}°</view>
             <view>{{item.windDir}}</view>
             <view class="text-gray">{{item.windScale}}级</view>
@@ -53,9 +53,9 @@
           <view class="item daily">
             <view>{{item.dateToString}}</view>
             <view class="text-gray">{{item.date}}</view>
-            <image class="icon" src="/node_modules/qweather-icons/icons/{{now.icon}}.svg"></image>
+            <image class="icon" src="/node_modules/qweather-icons/icons/{{item.iconDay}}.svg"></image>
             <view class="text-primary">{{item.tempMin}}°~{{item.tempMax}}°</view>
-            <image class="icon" src="/node_modules/qweather-icons/icons/{{now.icon}}.svg"></image>
+            <image class="icon" src="/node_modules/qweather-icons/icons/{{item.iconNight}}.svg"></image>
             <view>{{item.windDirDay}}</view>
             <view class="text-gray">{{item.windScaleDay}}级</view>
           </view>
