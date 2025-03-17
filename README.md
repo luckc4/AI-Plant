@@ -33,7 +33,6 @@ AI-Plant依赖微信云开发AI服务，请确保已开通微信云开发服务�
 
 #### 1.2 创建AI服务
 
-可通过以下两种方式接入AI能力：
 - 直接使用agent智能体服务
 
 
@@ -121,18 +120,11 @@ AI-Plant
 2. 请使用微信开发者工具2.2.3或以上版本
 3. AI功能需要网络连接才能正常使用
 
-## 贡献指南
-
-欢迎提交问题和功能建议，或直接提交代码贡献。
-
-## 许可证
-
-MIT License
 
 ## 联系方式
 
-如有问题，请通过GitHub Issues提交或联系项目维护者。
-
+QQ:1143829504@qq.com
+WeChat:18569872119
 ---
 
-© 2024 AI-Plant. All Rights Reserved.
+© 2025.03.17 AI-Plant. All Rights Reserved.
