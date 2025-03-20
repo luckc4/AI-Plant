@@ -1,7 +1,7 @@
 {
   "name": "ai-plant",
   "version": "1.0.0",
-  "description": "",
+  "description": "AI-Plant是一个基于微信小程序的智能植物p培养箱助手应用，结合了AI技术与植物监测功能，帮助用户更好地了解和照顾植物。该项目利用微信云开发服务与AI大模型能力，为植物爱好者提供一站式植物养护解决方案。",
   "homepage": "https://github.com/luckc4/AI-Plant#readme",
   "bugs": {
     "url": "https://github.com/luckc4/AI-Plant/issues"

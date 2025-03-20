@@ -1,8 +1,4 @@
-<view
-    class="container"
-    style="background-image: url('../../images/background.jpg'); height: {{windowHeight}}px; width: {{windowWidth}}px;"
->
-    <view class="page-title">环境监测数据</view>
+<view class="container">
     <view class="button-sp-are">
         <button
             class="data-card {{activeCard === 'temperature' ? 'active' : ''}}"
