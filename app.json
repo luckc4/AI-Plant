@@ -5,8 +5,12 @@
     "pages/analysis/analysis",
     "pages/daily/daily",
     "pages/addLog/addLog",
-    "pages/monitor/history/hitory",
-    "pages/history/history"
+    "pages/history/history",
+    "pages/temperature/temperature",
+    "pages/co2/co2",
+    "pages/soil/soil",
+    "pages/humidity/humidity",
+    "pages/light/light"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -65,5 +69,8 @@
         "text": "日志"
       }
     ]
+  },
+  "usingComponents": {
+    "ec-canvas": "ec-canvas/ec-canvas"
   }
 }

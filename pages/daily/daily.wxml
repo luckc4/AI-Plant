@@ -7,12 +7,16 @@
   
   <!-- Empty state with large plus button -->
   <view class="empty-state" wx:if="{{showEmptyState}}">
-    <view class="add-button" bindtap="addNewLog">+</view>
+    <view class="add-button" bindtap="addNewLog">
+      <image src="../../images/add.png" mode="aspectFit" class="add-icon"></image>
+    </view>
   </view>
   
   <!-- Logs list -->
   <scroll-view scroll-y="true" class="logs-container" wx:else enhanced="true" show-scrollbar="true" bounces="true">
-    <view class="add-button-small" bindtap="addNewLog">+</view>
+    <view class="add-button-small" bindtap="addNewLog">
+      <image src="../../images/add.png" mode="aspectFit" class="add-icon-small"></image>
+    </view>
     <view class="log-item" wx:for="{{logs}}" wx:key="index" bindtap="editLog" data-index="{{index}}">
       <view class="log-header">
         <view class="log-date">{{item.date}}</view>

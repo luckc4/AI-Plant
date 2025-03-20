@@ -1,2 +1,71 @@
 <!--pages/history/history.wxml-->
-<text>pages/history/history.wxml</text>
+<view class="container">
+  <view class="header">
+    <text class="title">传感器历史数据</text>
+    <view class="button-group">
+      <button size="mini" type="primary" bindtap="goBack">返回</button>
+      <button size="mini" type="default" bindtap="exportData">导出</button>
+      <button size="mini" type="warn" bindtap="clearHistoryData">清除</button>
+    </view>
+  </view>
+  
+  <!-- 整个页面的滚动视图 -->
+  <scroll-view 
+    scroll-y="true" 
+    class="main-scroll-view"
+    enhanced="true"
+    show-scrollbar="{{true}}"
+    scroll-anchoring="{{true}}"
+    refresher-enabled="{{true}}"
+    refresher-threshold="{{100}}"
+    refresher-default-style="black"
+    refresher-background="#f4f4f4"
+    refresher-triggered="{{isRefreshing}}"
+    bindrefresherpulling="onPulling"
+    bindrefresherrefresh="onRefresh"
+    bindrefresherrestore="onRestore"
+    bindrefresherabort="onAbort">
+    
+    <!-- 内容容器 -->
+    <view class="content-container">
+      <!-- 数据展示框 -->
+      <view class="data-display-box">
+        <block wx:if="{{historyData.length > 0}}">
+          <!-- 单个滚动区域，表头固定在顶部 -->
+          <scroll-view 
+            scroll-y="true" 
+            scroll-x="true" 
+            class="unified-scroll-view" 
+            enhanced="true" 
+            show-scrollbar="true">
+            
+            <!-- 表头固定 -->
+            <view class="list-header">
+              <text class="time-header">时间</text>
+              <text class="data-header">温度(℃)</text>
+              <text class="data-header">湿度(%)</text>
+              <text class="data-header">CO₂(ppm)</text>
+              <text class="data-header">土壤湿度(%)</text>
+              <text class="data-header">光照(lux)</text>
+            </view>
+            
+            <!-- 数据内容 -->
+            <view class="list-items">
+              <view class="list-item" wx:for="{{historyData}}" wx:key="rawTimestamp">
+                <text class="time">{{item.timestamp}}</text>
+                <text class="data-cell">{{item.temperature}}</text>
+                <text class="data-cell">{{item.humidity}}</text>
+                <text class="data-cell">{{item.co2}}</text>
+                <text class="data-cell">{{item.soilMoisture}}</text>
+                <text class="data-cell">{{item.lightIntensity}}</text>
+              </view>
+            </view>
+          </scroll-view>
+        </block>
+        <view wx:else class="no-data">
+          <text>暂无历史数据</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

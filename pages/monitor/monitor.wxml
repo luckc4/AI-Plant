@@ -1,55 +1,90 @@
-<view class="container">
-    <view class="button-sp-are">
-        <button
-            class="data-card {{activeCard === 'temperature' ? 'active' : ''}}"
-            bindtap="onCardTap"
-            data-type="temperature"
-            size="mini"
-        >
-            温度：{{temperature}}℃
-        </button>
-        <button
-            class="data-card {{activeCard === 'humidity' ? 'active' : ''}}"
-            bindtap="onCardTap"
-            data-type="humidity"
-            size="mini"
-        >
-            湿度：{{humidity}}℃
-        </button>
-        <button
-            class="data-card {{activeCard === 'co2' ? 'active' : ''}}"
-            bindtap="onCardTap"
-            data-type="co2"
-            size="mini"
-        >
-            CO₂浓度：{{co2}} ppm
-        </button>
-        <button
-            class="data-card {{activeCard === 'soilMoisture' ? 'active' : ''}}"
-            bindtap="onCardTap"
-            data-type="soilMoisture"
-            size="mini"
-        >
-            土壤湿度：{{soilMoisture}}%
-        </button>
-        <button
-            class="data-card {{activeCard === 'lightIntensity' ? 'active' : ''}}"
-            bindtap="onCardTap"
-            data-type="lightIntensity"
-            size="mini"
-        >
-            光照强度：{{lightIntensity}} lux
-        </button>
-        <button
-            class="data-card {{activeCard === 'fanSpeed' ? 'active' : ''}}"
-            bindtap="onCardTap"
-            data-type="fanSpeed"
-            size="mini"
-        >
-            风扇强度：{{fanSpeed}}%
-        </button>
+<scroll-view 
+    scroll-y="true" 
+    refresher-enabled="{{true}}"
+    refresher-threshold="50"
+    refresher-default-style="black"
+    refresher-background="#fff"
+    bindrefresherrefresh="onRefresh"
+    class="scroll-container">
+    <view class="container">
+        <!-- 添加标题 -->
+        <view class="page-title">监测页面</view>
+        
+        <view class="data-cards-container">
+            <!-- 第一行：温度卡片 -->
+            <view class="data-card-row">
+                <button
+                    class="data-card temperature-card {{activeCard === 'temperature' ? 'active' : ''}}"
+                    bindtap="onCardTap"
+                    data-type="temperature"
+                >
+                    <image class="card-icon" src="../../images/temperature.png" mode="aspectFit"></image>
+                    <view class="card-text">
+                        <view class="card-label">温度</view>
+                        <view class="card-value">{{temperature}}℃</view>
+                    </view>
+                </button>
+            </view>
+
+            <!-- 第二行：湿度和CO2卡片 -->
+            <view class="data-card-row">
+                <button
+                    class="data-card {{activeCard === 'humidity' ? 'active' : ''}}"
+                    bindtap="onCardTap"
+                    data-type="humidity"
+                >
+                    <image class="card-icon" src="../../images/humidity.png" mode="aspectFit"></image>
+                    <view class="card-text">
+                        <view class="card-label">湿度</view>
+                        <view class="card-value">{{humidity}}%</view>
+                    </view>
+                </button>
+                <button
+                    class="data-card {{activeCard === 'co2' ? 'active' : ''}}"
+                    bindtap="onCardTap"
+                    data-type="co2"
+                >
+                    <image class="card-icon" src="../../images/co2.png" mode="aspectFit"></image>
+                    <view class="card-text">
+                        <view class="card-label">CO₂浓度</view>
+                        <view class="card-value">{{co2}} ppm</view>
+                    </view>
+                </button>
+            </view>
+
+            <!-- 第三行：土壤湿度和光照强度卡片 -->
+            <view class="data-card-row">
+                <button
+                    class="data-card {{activeCard === 'soilMoisture' ? 'active' : ''}}"
+                    bindtap="onCardTap"
+                    data-type="soilMoisture"
+                >
+                    <image class="card-icon" src="../../images/soil.png" mode="aspectFit"></image>
+                    <view class="card-text">
+                        <view class="card-label">土壤湿度</view>
+                        <view class="card-value">{{soilMoisture}}%</view>
+                    </view>
+                </button>
+                <button
+                    class="data-card {{activeCard === 'lightIntensity' ? 'active' : ''}}"
+                    bindtap="onCardTap"
+                    data-type="lightIntensity"
+                >
+                    <image class="card-icon" src="../../images/light.png" mode="aspectFit"></image>
+                    <view class="card-text">
+                        <view class="card-label">光照强度</view>
+                        <view class="card-value">{{lightIntensity}} lux</view>
+                    </view>
+                </button>
+            </view>
+        </view>
+        
+        <!-- 查看历史数据按钮 -->
+        <view class="history-button-container">
+            <button class="history-button" bindtap="goToHistory" type="primary">查看历史数据</button>
+        </view>
     </view>
-</view>
+</scroll-view>
 
 <!--  发布数据格式
 {
@@ -57,7 +92,6 @@
   "humidity": 2,
   "co2": 3,
   "soilMoisture": 4,
-  "lightIntensity": 5,
-  "fanSpeed": 6
+  "lightIntensity": 5
 }
   -->

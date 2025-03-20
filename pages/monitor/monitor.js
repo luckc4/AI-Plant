@@ -92,14 +92,19 @@ Page({
       console.log(" 收到 topic:" + topic + " , payload :" + payload);
       try {
         const data = JSON.parse(payload);
-        that.setData({
+        const newData = {
           temperature: data.currentTemperature || that.data.temperature,
           humidity: data.humidity || that.data.humidity,
           co2: data.co2 || that.data.co2,
           soilMoisture: data.soilMoisture || that.data.soilMoisture,
           lightIntensity: data.lightIntensity || that.data.lightIntensity,
           fanSpeed: data.fanSpeed || that.data.fanSpeed
-        });
+        };
+        
+        that.setData(newData);
+        
+        // 将传感器数据保存到历史记录
+        that.saveSensorDataToHistory(newData);
       } catch (e) {
         console.error("解析消息失败:", e);
       }
@@ -136,5 +141,78 @@ Page({
         activeCard: type
       });
     }
-  }
+  },
+  
+  // 保存传感器数据到历史记录
+  saveSensorDataToHistory: function(sensorData) {
+    // 只在有温度和湿度数据时保存
+    if (!sensorData.temperature || !sensorData.humidity) {
+      return;
+    }
+    
+    try {
+      // 从本地存储获取现有历史数据
+      let historyData = wx.getStorageSync('sensor_history_data') || [];
+      
+      // 格式化时间戳
+      const now = new Date();
+      const timestamp = `${now.getFullYear()}-${(now.getMonth()+1).toString().padStart(2, '0')}-${now.getDate().toString().padStart(2, '0')} ${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+      
+      // 创建新的历史记录
+      const historyRecord = {
+        temperature: sensorData.temperature,
+        humidity: sensorData.humidity,
+        co2: sensorData.co2,
+        soilMoisture: sensorData.soilMoisture,
+        lightIntensity: sensorData.lightIntensity,
+        fanSpeed: sensorData.fanSpeed,
+        timestamp: timestamp,
+        rawTimestamp: now.getTime() // 用于排序
+      };
+      
+      // 添加到历史数据数组
+      historyData.push(historyRecord);
+      
+      // 如果历史数据过多，只保留最近的500条
+      if (historyData.length > 500) {
+        historyData = historyData.slice(-500);
+      }
+      
+      // 保存回本地存储
+      wx.setStorageSync('sensor_history_data', historyData);
+      console.log("已保存传感器数据到历史记录");
+    } catch (e) {
+      console.error("保存历史数据失败:", e);
+    }
+  },
+  
+  // 跳转到历史数据页面
+  goToHistory: function() {
+    wx.navigateTo({
+      url: '/pages/history/history'
+    });
+  },
+
+  onRefresh() {
+    // 重新获取数据
+    this.getLatestData();
+    wx.stopPullDownRefresh();
+  },
+
+  getLatestData() {
+    // 这里添加获取最新数据的逻辑
+    wx.showLoading({
+      title: '刷新中...',
+    });
+
+    // 模拟数据刷新
+    setTimeout(() => {
+      wx.hideLoading();
+      wx.showToast({
+        title: '刷新成功',
+        icon: 'success',
+        duration: 1000
+      });
+    }, 1000);
+  },
 })

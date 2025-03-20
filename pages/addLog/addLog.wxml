@@ -1,5 +1,6 @@
 <!-- addLog.wxml -->
 <view class="page-container">
+  <view class="header-space"></view>
   <view class="header">
     <view class="back-arrow" bindtap="goBack">←</view>
     <view class="save-btn" bindtap="saveLog">保存</view>

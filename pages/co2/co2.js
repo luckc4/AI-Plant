@@ -1,4 +1,4 @@
-// pages/monitor/history/hitory.js
+// pages/co2/co2.js
 Page({
 
   /**
