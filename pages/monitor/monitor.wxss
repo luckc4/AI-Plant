@@ -40,7 +40,7 @@ button{
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 40px;
+  gap: 28px;
   width: 100%;
   padding: 10px 5px;
 }

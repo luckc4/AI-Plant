@@ -13,6 +13,9 @@ Page({
       lightIntensity:"",
       fanSpeed:"",
       activeCard: "", // 当前激活的卡片
+      
+      lastTapTime: 0, // 记录上次点击时间，用于检测双击
+      lastTapType: "", // 记录上次点击的卡片类型
 
       client:null,//记录重连的次数
       reconnectCounts:0,//MQTT连接的配置
@@ -129,6 +132,25 @@ Page({
   // 卡片点击事件处理函数
   onCardTap: function(e) {
     const type = e.currentTarget.dataset.type;
+    const currentTime = new Date().getTime();
+    
+    // 检测双击 - 300ms内两次点击同一张卡片视为双击
+    if (this.data.lastTapType === type && currentTime - this.data.lastTapTime < 300) {
+      // 双击操作
+      this.handleDoubleTap(type);
+      // 重置点击时间和类型，防止连续触发
+      this.setData({
+        lastTapTime: 0,
+        lastTapType: ""
+      });
+      return;
+    }
+    
+    // 记录本次点击的时间和类型
+    this.setData({
+      lastTapTime: currentTime,
+      lastTapType: type
+    });
     
     // 如果点击的是当前已激活的卡片，则取消激活状态
     if (this.data.activeCard === type) {
@@ -141,6 +163,37 @@ Page({
         activeCard: type
       });
     }
+  },
+  
+  // 处理双击事件
+  handleDoubleTap: function(type) {
+    if (type === 'temperature') {
+      wx.navigateTo({
+        url: '/pages/temperature/temperature'
+      });
+      console.log('双击跳转到温度详情页');
+    } else if (type === 'humidity') {
+      wx.navigateTo({
+        url: '/pages/humidity/humidity'
+      });
+      console.log('双击跳转到湿度详情页');
+    } else if (type === 'co2') {
+      wx.navigateTo({
+        url: '/pages/co2/co2'
+      });
+      console.log('双击跳转到CO2详情页');
+    } else if (type === 'soilMoisture') {
+      wx.navigateTo({
+        url: '/pages/soil/soil'
+      });
+      console.log('双击跳转到土壤湿度详情页');
+    } else if (type === 'lightIntensity') {
+      wx.navigateTo({
+        url: '/pages/light/light'
+      });
+      console.log('双击跳转到光照强度详情页');
+    }
+    // 后续可添加其他类型卡片的双击处理
   },
   
   // 保存传感器数据到历史记录

@@ -1,1 +1,131 @@
 /* pages/humidity/humidity.wxss */
+.container {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding-bottom: 20rpx;
+}
+
+/* 导航栏样式 */
+.nav-bar {
+  width: 100%;
+  height: 90rpx;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  position: relative;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+
+.back-btn {
+  position: absolute;
+  left: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  padding: 4rpx 20rpx;
+  border-radius: 10rpx;
+  background-color: #f9f9f9;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.1);
+}
+
+.back-text {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #4fc08d;
+}
+
+.title {
+  flex: 1;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 当前湿度卡片样式 */
+.current-data-card {
+  width: 90%;
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 6rpx 20rpx rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-label {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.card-value {
+  font-size: 80rpx;
+  font-weight: bold;
+  color: #4fc08d;
+  margin-bottom: 20rpx;
+}
+
+.update-time {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 统计数据样式 */
+.stats-container {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+}
+
+.stat-item {
+  width: 30%;
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  padding: 20rpx 10rpx;
+  box-shadow: 0 6rpx 20rpx rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.stat-value {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+/* 图表样式 */
+.chart-container {
+  width: 90%;
+  height: 700rpx;
+  background-color: #ffffff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 6rpx 20rpx rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+ec-canvas {
+  width: 100%;
+  height: 100%;
+}

@@ -1,2 +1,39 @@
 <!--pages/soil/soil.wxml-->
-<text>pages/soil/soil.wxml</text>
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <view class="nav-bar">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-text">返回</text>
+    </view>
+    <view class="title">土壤湿度详情</view>
+  </view>
+  
+  <!-- 当前土壤湿度显示 -->
+  <view class="current-data-card">
+    <view class="card-label">当前土壤湿度</view>
+    <view class="card-value">{{currentSoilMoisture}}%</view>
+    <view class="soil-state">土壤状态: <text class="state-text">{{soilState}}</text></view>
+    <view class="update-time">更新时间: {{lastUpdateTime}}</view>
+  </view>
+  
+  <!-- 土壤湿度统计信息 -->
+  <view class="stats-container">
+    <view class="stat-item">
+      <view class="stat-label">平均</view>
+      <view class="stat-value">{{averageSoilMoisture}}%</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-label">最高</view>
+      <view class="stat-value">{{maxSoilMoisture}}%</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-label">最低</view>
+      <view class="stat-value">{{minSoilMoisture}}%</view>
+    </view>
+  </view>
+  
+  <!-- 图表容器 -->
+  <view class="chart-container">
+    <ec-canvas id="soil-chart" canvas-id="soil-chart" ec="{{ ec }}"></ec-canvas>
+  </view>
+</view>

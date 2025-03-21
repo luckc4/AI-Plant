@@ -88,10 +88,10 @@
 
 <!--  发布数据格式
 {
-  "currentTemperature": 1,
-  "humidity": 2,
-  "co2": 3,
-  "soilMoisture": 4,
-  "lightIntensity": 5
+  "currentTemperature": 32,
+  "humidity": 80,
+  "co2": 700,
+  "soilMoisture": 30,
+  "lightIntensity": 1500
 }
   -->

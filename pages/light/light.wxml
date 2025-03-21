@@ -1,2 +1,39 @@
 <!--pages/light/light.wxml-->
-<text>pages/light/light.wxml</text>
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <view class="nav-bar">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-text">返回</text>
+    </view>
+    <view class="title">光照强度详情</view>
+  </view>
+  
+  <!-- 当前光照强度显示 -->
+  <view class="current-data-card">
+    <view class="card-label">当前光照强度</view>
+    <view class="card-value">{{currentLightIntensity}} lux</view>
+    <view class="light-level">光照级别: <text class="level-text">{{lightLevel}}</text></view>
+    <view class="update-time">更新时间: {{lastUpdateTime}}</view>
+  </view>
+  
+  <!-- 光照强度统计信息 -->
+  <view class="stats-container">
+    <view class="stat-item">
+      <view class="stat-label">平均</view>
+      <view class="stat-value">{{averageLightIntensity}} lux</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-label">最高</view>
+      <view class="stat-value">{{maxLightIntensity}} lux</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-label">最低</view>
+      <view class="stat-value">{{minLightIntensity}} lux</view>
+    </view>
+  </view>
+  
+  <!-- 图表容器 -->
+  <view class="chart-container">
+    <ec-canvas id="light-chart" canvas-id="light-chart" ec="{{ ec }}"></ec-canvas>
+  </view>
+</view>

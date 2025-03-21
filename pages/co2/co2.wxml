@@ -1,2 +1,39 @@
 <!--pages/co2/co2.wxml-->
-<text>pages/co2/co2.wxml</text>
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <view class="nav-bar">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-text">返回</text>
+    </view>
+    <view class="title">CO₂浓度详情</view>
+  </view>
+  
+  <!-- 当前CO2显示 -->
+  <view class="current-data-card">
+    <view class="card-label">当前CO₂浓度</view>
+    <view class="card-value">{{currentCO2}} ppm</view>
+    <view class="air-quality">空气质量: <text class="quality-text">{{airQuality}}</text></view>
+    <view class="update-time">更新时间: {{lastUpdateTime}}</view>
+  </view>
+  
+  <!-- CO2统计信息 -->
+  <view class="stats-container">
+    <view class="stat-item">
+      <view class="stat-label">平均</view>
+      <view class="stat-value">{{averageCO2}} ppm</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-label">最高</view>
+      <view class="stat-value">{{maxCO2}} ppm</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-label">最低</view>
+      <view class="stat-value">{{minCO2}} ppm</view>
+    </view>
+  </view>
+  
+  <!-- 图表容器 -->
+  <view class="chart-container">
+    <ec-canvas id="co2-chart" canvas-id="co2-chart" ec="{{ ec }}"></ec-canvas>
+  </view>
+</view>

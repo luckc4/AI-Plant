@@ -1,2 +1,38 @@
 <!--pages/humidity/humidity.wxml-->
-<text>pages/humidity/humidity.wxml</text>
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <view class="nav-bar">
+    <view class="back-btn" bindtap="goBack">
+      <text class="back-text">返回</text>
+    </view>
+    <view class="title">湿度详情</view>
+  </view>
+  
+  <!-- 当前湿度显示 -->
+  <view class="current-data-card">
+    <view class="card-label">当前湿度</view>
+    <view class="card-value">{{currentHumidity}}%</view>
+    <view class="update-time">更新时间: {{lastUpdateTime}}</view>
+  </view>
+  
+  <!-- 湿度统计信息 -->
+  <view class="stats-container">
+    <view class="stat-item">
+      <view class="stat-label">平均</view>
+      <view class="stat-value">{{averageHumidity}}%</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-label">最高</view>
+      <view class="stat-value">{{maxHumidity}}%</view>
+    </view>
+    <view class="stat-item">
+      <view class="stat-label">最低</view>
+      <view class="stat-value">{{minHumidity}}%</view>
+    </view>
+  </view>
+  
+  <!-- 图表容器 -->
+  <view class="chart-container">
+    <ec-canvas id="humidity-chart" canvas-id="humidity-chart" ec="{{ ec }}"></ec-canvas>
+  </view>
+</view>
