@@ -20,7 +20,7 @@
         <view class="log-time">{{item.time}}</view>
       </view>
       <view class="divider"></view>
-      <view class="log-content">{{item.content.length > 15 ? item.content.substring(0, 15) + '...' : item.content}}</view>
+      <view class="log-content">{{item.content || ''}}</view>
     </view>
   </scroll-view>
 </view>

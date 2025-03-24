@@ -147,7 +147,7 @@ Page({
     // 转换为CSV格式
     let csvContent = "时间,温度,湿度,CO2,土壤湿度,光照强度,风扇强度\n";
     historyData.forEach(item => {
-      csvContent += `${item.timestamp},${item.temperature},${item.humidity},${item.co2 || ''},${item.soilMoisture || ''},${item.lightIntensity || ''},${item.fanSpeed || ''}\n`;
+      csvContent += `${item.timestamp},${item.temperature},${item.humidity},${item.co2 || ''},${item.soilMoisture || ''},${item.lightIntensity || ''}\n`;
     });
     
     // 使用文件系统API保存
