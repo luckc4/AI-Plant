@@ -8,8 +8,11 @@ Page({
     
     agentConfig: {
       type: "bot", // 值为'bot'或'model'。当type='bot'时，botId必填；当type='model'时，modelName和model必填
-      botId: "bot-2ce669c4", // agent id
-      
+      botId: "bot-80e6ea14", // agent id
+      allowWebSearch: true, // 允许客户端选择启用联网搜索
+      allowUploadFile: true, // 允许上传文件
+      allowPullRefresh: true, // 允许下拉刷新
+      allowUploadImage: true
     },
   },
 

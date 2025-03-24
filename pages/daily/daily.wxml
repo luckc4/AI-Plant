@@ -1,8 +1,5 @@
 <!-- daily.wxml -->
-<view 
-  class="container" 
-  style="background-image: url('../../images/back2.jpg'); background-size: cover; background-position: center; height: {{windowHeight}}px; width: {{windowWidth}}px;"
->
+<view >
   <view class="title">植物生长日志</view>
   
   <!-- Empty state with large plus button -->

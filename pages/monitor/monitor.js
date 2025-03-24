@@ -11,7 +11,7 @@ Page({
       co2:"",
       soilMoisture:"",
       lightIntensity:"",
-      fanSpeed:"",
+      
       activeCard: "", // 当前激活的卡片
       
       lastTapTime: 0, // 记录上次点击时间，用于检测双击
@@ -100,8 +100,7 @@ Page({
           humidity: data.humidity || that.data.humidity,
           co2: data.co2 || that.data.co2,
           soilMoisture: data.soilMoisture || that.data.soilMoisture,
-          lightIntensity: data.lightIntensity || that.data.lightIntensity,
-          fanSpeed: data.fanSpeed || that.data.fanSpeed
+          lightIntensity: data.lightIntensity || that.data.lightIntensity
         };
         
         that.setData(newData);
@@ -218,7 +217,7 @@ Page({
         co2: sensorData.co2,
         soilMoisture: sensorData.soilMoisture,
         lightIntensity: sensorData.lightIntensity,
-        fanSpeed: sensorData.fanSpeed,
+        
         timestamp: timestamp,
         rawTimestamp: now.getTime() // 用于排序
       };
