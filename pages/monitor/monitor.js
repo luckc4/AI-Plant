@@ -31,12 +31,12 @@ Page({
       },
 
       aliyunInfo: {
-        productKey: "a1uej7IgjFk",
-        deviceName: "weChat",
-        deviceSecret: "d3627c63e3a025e25b591cc9938afc32",
-        regionId: 'cn-shanghai', //阿里云连接的三元组 ，请自己替代为自己的产品信息!!
-        pubTopic: '/a1uej7IgjFk/weChat/user/topic', //发布消息的主题
-        subTopic: '/a1uej7IgjFk/weChat/user/topic', //订阅消息的主题
+        productKey: "a10exP5nHAz",
+        deviceName: "WeChat",
+        deviceSecret: "3fd715b1f05214b4893f1db9fec3fde3",
+        regionId: 'cn-shanghai', //阿里云连接的三元组 ，请自己替代为自己的产品信息!!
+        pubTopic: '/a10exP5nHAz/WeChat/user/WeChat', //发布消息的主题
+        subTopic: '/a1uej7IgjFk/weChat/user/topic', //订阅消息的主题
         
       },
     },
