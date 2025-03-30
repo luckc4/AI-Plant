@@ -20,7 +20,7 @@
                 >
                     <image class="card-icon" src="../../images/temperature.png" mode="aspectFit"></image>
                     <view class="card-text">
-                        <view class="card-label">温度</view>
+                        <view class="card-label">环境温度</view>
                         <view class="card-value">{{temperature}}℃</view>
                     </view>
                 </button>
@@ -35,8 +35,8 @@
                 >
                     <image class="card-icon" src="../../images/humidity.png" mode="aspectFit"></image>
                     <view class="card-text">
-                        <view class="card-label">湿度</view>
-                        <view class="card-value">{{humidity}}%</view>
+                        <view class="card-label">环境湿度</view>
+                        <view class="card-value">{{humidity}} %</view>
                     </view>
                 </button>
                 <button
@@ -62,7 +62,7 @@
                     <image class="card-icon" src="../../images/soil.png" mode="aspectFit"></image>
                     <view class="card-text">
                         <view class="card-label">土壤湿度</view>
-                        <view class="card-value">{{soilMoisture}}%</view>
+                        <view class="card-value">{{soilMoisture}} RH</view>
                     </view>
                 </button>
                 <button
@@ -73,7 +73,7 @@
                     <image class="card-icon" src="../../images/light.png" mode="aspectFit"></image>
                     <view class="card-text">
                         <view class="card-label">光照强度</view>
-                        <view class="card-value">{{lightIntensity}} lux</view>
+                        <view class="card-value">{{lightIntensity}} Lux</view>
                     </view>
                 </button>
             </view>
