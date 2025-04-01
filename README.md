@@ -1,21 +1,73 @@
 # AI-Plant 智能植物培养箱
 
+<div align="center">
+  <img src="images/logo.png" alt="AI-Plant Logo" width="200"/>
+  <p>基于微信小程序的智能植物养护助手</p>
+</div>
 
-## 项目概述
+## 📋 项目概述
 
-AI-Plant是一个基于微信小程序的智能植物p培养箱助手应用，结合了AI技术与植物监测功能，帮助用户更好地了解和照顾植物。该项目利用微信云开发服务与AI大模型能力，为植物爱好者提供一站式植物养护解决方案。
+AI-Plant 是一款创新的智能植物养护小程序，将人工智能技术与植物监测功能完美结合，为用户提供全方位的植物养护解决方案。本项目采用微信云开发架构，结合先进的 AI 大模型技术，致力于帮助植物爱好者更好地了解和照顾他们的植物。
 
+### 🌟 核心优势
+- 智能化的植物生长环境监测
+- 基于 AI 的植物健康诊断
+- 个性化的养护建议
+- 便捷的养护日志管理
+- 实时的天气数据集成
 
-## 主要功能
-- **天气查询**：接入和风天气api,实现当日24小时和7天的天气查询功能
-- **AI问答**：接入deepseek r1大模型，技术分析植物状况，提供养护建议
-- **植物监测**：实时监测植物生长环境数据
-- **养护日志**：用户自行记录植物的生长历程
+## 🚀 主要功能
 
+### 1. 智能天气查询
+- 接入和风天气 API，提供精准的天气数据
+- 支持 24 小时天气预报
+- 7 天天气趋势分析
+- 智能天气提醒服务
 
+### 2. AI 智能诊断
+- 集成 DeepSeek R1 大模型
+- 植物健康状况智能分析
+- 个性化养护建议生成
+- 常见植物问题诊断
 
-## 安装指南
+### 3. 植物生长监测
+- 实时环境数据采集
+- 温度、湿度、光照等关键指标监控
+- 数据可视化展示
+- 异常情况智能预警
 
+### 4. 养护日志系统
+- 便捷的日志记录功能
+- 生长历程追踪
+- 养护计划制定
+- 数据统计分析
+
+## 🛠️ 技术架构
+
+### 前端技术栈
+- 微信小程序原生框架
+- WeUI 组件库
+- ECharts 图表库
+
+### 后端技术栈
+- 微信云开发
+- 云函数
+- 云数据库
+- 云存储
+
+### AI 能力
+- DeepSeek R1 大模型
+- 计算机视觉分析
+- 自然语言处理
+
+## 📦 安装部署
+
+### 环境要求
+- Node.js >= 14.0.0
+- 微信开发者工具 >= 2.2.3
+- 微信云开发环境
+
+### 安装步骤
 ```bash
 git clone https://github.com/luckc4/AI-Plant.git
 cd AI-Plant
@@ -23,108 +75,122 @@ npm init
 npm install -y
 ```
 
-## 配置说明
+## ⚙️ 配置说明
 
-### 1. 前置条件
-
-#### 1.1 开通微信云开发
-
-AI-Plant依赖微信云开发AI服务，请确保已开通微信云开发服务。如已开通，请前往云开发平台(`https://tcb.cloud.tencent.com/dev`)创建AI服务。
-
-#### 1.2 创建AI服务
-
-- 直接使用agent智能体服务
-
-
-### 2. 项目配置
-
-#### 2.1 配置云开发环境ID
-
-在`app.js`文件中配置您的云开发环境ID：
+### 1. 云开发环境配置
+1. 登录微信云开发控制台
+2. 创建云开发环境
+3. 获取环境 ID
+4. 在 `app.js` 中配置环境 ID
 
 ```javascript
 App({
   onLaunch: function () {
-    if (!wx.cloud) {
-      console.error("请使用 2.2.3 或以上的基础库以使用云能力");
-    } else {
-      wx.cloud.init({
-        env: "你的云环境ID", // 填入您的环境id
-        traceUser: true,
-      });
-    }
-  },
+    wx.cloud.init({
+      env: "your-env-id",  //填写自己的云开发环境id
+      traceUser: true,
+    });
+  }
 });
 ```
 
-#### 2.2 配置AI服务
-
-在对应页面JS文件中配置agent-ui组件，根据您的需求选择配置方式：
-
-**方式一：对接agent服务**
-
+### 2. AI 服务配置
+// pages/analysis/analysis.js
 ```javascript
-agentConfig: {
-  type: "bot",
-  botId: "your-bot-id", 
-  modelName: "", 
-  model: "",
-  logo: "",
-  welcomeMessage: ""
-}
+data: {
+    agentConfig: {
+      type: "bot", // 值为'bot'或'model'。当type='bot'时，botId必填；当type='model'时，modelName和model必填
+      botId: "bot-80e6ea14", // agent id
+      allowWebSearch: true, // 允许客户端选择启用联网搜索
+      allowUploadFile: true, // 允许上传文件
+      allowPullRefresh: true, // 允许下拉刷新
+      allowUploadImage: true, // 允许上传图片
+    },
+  },
 ```
 
-**方式二：对接AI大模型**
 
-```javascript
-agentConfig: {
-  type: "model",
-  botId: "", 
-  modelName: "hunyuan", // 可选：hunyuan, deepseek等
-  model: "hunyuan-lite", // 具体的模型版本
-  logo: "",
-  welcomeMessage: ""
-}
-```
-
-## 项目结构
-
+## 📁 项目结构
 ```
 AI-Plant
-├── components          // 自定义组件
-│   ├── agent-ui        // AI交互组件
-│   └── navigation-bar  // 导航栏组件
-├── images              // 图片资源
-├── pages               // 小程序页面
-│   ├── index           // 首页
-│   ├── monitor         // 监测页面
-│   ├── analysis        // 分析页面
-│   ├── daily           // 日志页面
-│   └── addLog          // 添加日志页面
-├── utils               // 工具函数
-├── app.js              // 小程序入口文件
-├── app.json            // 小程序全局配置
-└── app.wxss            // 小程序全局样式
+├── components/          # 自定义组件
+│   ├── agent-ui/       # AI 交互组件
+│   └── navigation-bar/ # 导航栏组件
+├── images/             # 图片资源
+├── pages/              # 小程序页面
+│   ├── index/         # 首页
+│   ├── monitor/       # 监测页面
+│   ├── analysis/      # 分析页面
+│   ├── daily/         # 日志页面
+│   └── addLog/        # 添加日志页面
+├── utils/              # 工具函数
+├── app.js              # 小程序入口文件
+├── app.json            # 小程序全局配置
+└── app.wxss            # 小程序全局样式
 ```
 
-## 小程序使用指南
+## 📱 使用指南
 
-1. **首页**：展示植物概况和快捷入口
-2. **监测页**：查看植物生长环境数据，包括温度、湿度、光照等
-3. **分析页**：上传植物照片或描述问题，获取AI分析和建议
-4. **日志页**：记录和查看植物生长历程，添加养护记录
+### 1. 首页功能
+- 植物生长状态概览
+- 快捷功能入口
+- 重要数据展示
+- 智能提醒
 
-## 注意事项
+### 2. 监测页面
+- 实时环境数据展示
+- 历史数据趋势图
+- 异常数据标记
+- 数据导出功能
 
-1. 使用前请确保已正确配置云环境和AI服务
-2. 请使用微信开发者工具2.2.3或以上版本
-3. AI功能需要网络连接才能正常使用
+### 3. 分析页面
+- 植物照片上传
+- AI 智能诊断
+- 养护建议生成
+- 问题解决方案
 
+### 4. 日志页面
+- 养护记录管理
+- 生长历程追踪
+- 数据统计分析
+- 养护计划制定
 
-## 联系方式
+## ⚠️ 注意事项
 
-QQ:1143829504@qq.com
-WeChat:18569872119
+1. 开发环境配置
+   - 确保使用最新版本的微信开发者工具
+   - 正确配置云开发环境
+   - 安装所需依赖包
+
+2. 运行要求
+   - 保持网络连接稳定
+   - 确保云开发服务正常运行
+   - 检查 AI 服务配置是否正确
+
+3. 使用限制
+   - AI 功能需要网络连接
+   - 部分功能可能需要用户授权
+   - 注意 API 调用频率限制
+
+## 🤝 贡献指南
+
+欢迎提交 Issue 和 Pull Request 来帮助改进项目。在提交代码前，请确保：
+1. 代码符合项目规范
+2. 添加必要的注释
+3. 更新相关文档
+4. 通过所有测试
+
+## 📞 联系方式
+
+- 邮箱：1143829504@qq.com
+- 微信：18569872119
+- 项目主页：[GitHub](https://github.com/luckc4/AI-Plant)
+
+## 📄 许可证
+
+本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
+
 ---
-
-© 2025.03.17 AI-Plant. All Rights Reserved.
+<div align="center">
+  © 2025.03.17 AI-Plant. All Rights Reserved.
+</div>
