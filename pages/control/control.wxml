@@ -1,0 +1,109 @@
+<!--pages/control/control.wxml-->
+<view class="container">
+  <!-- 返回按钮 -->
+  <view class="back-button" bindtap="goBack">
+    <view class="back-arrow"></view>
+    <text>返回</text>
+  </view>
+
+  <view class="page-title">植物控制</view>
+  
+  <!-- 植物名称展示区域 -->
+  <view class="plant-selector">
+    <view class="nav-controls left">
+      <view class="triangle-left"></view>
+      <view class="circle-button minus" bindtap="showRemovePanel">
+        <text>-</text>
+      </view>
+    </view>
+    
+    <view class="plant-names-container">
+      <scroll-view class="plant-names" scroll-x="true" scroll-with-animation="true" scroll-into-view="{{centerPlantId}}" scroll-left="{{scrollPosition}}">
+        <!-- 添加左侧空白占位，确保第一个元素可以居中 -->
+        <view class="name-placeholder"></view>
+        <block wx:for="{{plants}}" wx:key="id">
+          <view id="plant-{{item.id}}" 
+                class="plant-name {{currentIndex === index ? 'active' : (index === currentIndex-1 || index === currentIndex+1 ? 'adjacent' : '')}}" 
+                bindtap="selectPlant" 
+                data-index="{{index}}">
+            {{item.name}}
+          </view>
+        </block>
+        <!-- 添加右侧空白占位，确保最后一个元素可以居中 -->
+        <view class="name-placeholder"></view>
+        <view wx:if="{{plants.length === 0}}" class="empty-tip">请添加植物</view>
+      </scroll-view>
+    </view>
+    
+    <view class="nav-controls right">
+      <view class="triangle-right"></view>
+      <view class="circle-button plus" bindtap="showAddPanel">
+        <text>+</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 植物图片展示区域 -->
+  <view class="plant-image-container">
+    <swiper class="plant-swiper" current="{{currentIndex}}" bindchange="swiperChange">
+      <block wx:for="{{plants}}" wx:key="id">
+        <swiper-item>
+          <image class="plant-image" src="../../images/{{item.image}}" mode="aspectFit"></image>
+          <view class="plant-details">
+            <text class="plant-detail-name">{{item.name}}</text>
+            <text class="plant-type">类型: {{item.type === 'vegetable' ? '蔬菜' : '花卉'}}</text>
+          </view>
+        </swiper-item>
+      </block>
+      <swiper-item wx:if="{{plants.length === 0}}">
+        <view class="empty-image-placeholder">请添加植物</view>
+      </swiper-item>
+    </swiper>
+  </view>
+  
+  <!-- 添加植物面板 -->
+  <view class="plant-panel {{showAddPanel ? 'show' : ''}}">
+    <view class="panel-title">选择植物</view>
+    <view class="panel-section">
+      <view class="section-title">蔬菜</view>
+      <view class="plant-grid">
+        <block wx:for="{{availableVegetables}}" wx:key="name">
+          <view class="plant-item" bindtap="addPlant" data-plant="{{item}}">
+            <image class="plant-thumbnail" src="../../images/{{item.image}}" mode="aspectFit"></image>
+            <text>{{item.name}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="panel-section">
+      <view class="section-title">花卉</view>
+      <view class="plant-grid">
+        <block wx:for="{{availableFlowers}}" wx:key="name">
+          <view class="plant-item" bindtap="addPlant" data-plant="{{item}}">
+            <image class="plant-thumbnail" src="../../images/{{item.image}}" mode="aspectFit"></image>
+            <text>{{item.name}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="panel-close" bindtap="hidePanel">关闭</view>
+  </view>
+  
+  <!-- 删除植物面板 -->
+  <view class="plant-panel {{showRemovePanel ? 'show' : ''}}">
+    <view class="panel-title">删除植物</view>
+    <view class="plant-list">
+      <block wx:for="{{plants}}" wx:key="id">
+        <view class="plant-item remove-item" bindtap="removePlant" data-id="{{item.id}}">
+          <image class="plant-thumbnail" src="../../images/{{item.image}}" mode="aspectFit"></image>
+          <text>{{item.name}}</text>
+        </view>
+      </block>
+      <view wx:if="{{plants.length === 0}}" class="empty-tip">暂无植物可删除</view>
+    </view>
+    <view class="panel-close" bindtap="hidePanel">关闭</view>
+  </view>
+  
+  <!-- 遮罩层 -->
+  <view class="mask" wx:if="{{showAddPanel || showRemovePanel}}" bindtap="hidePanel"></view>
+</view>

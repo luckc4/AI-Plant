@@ -10,7 +10,8 @@
     "pages/co2/co2",
     "pages/soil/soil",
     "pages/humidity/humidity",
-    "pages/light/light"
+    "pages/light/light",
+    "pages/control/control"
   ],
   "window": {
     "backgroundTextStyle": "light",

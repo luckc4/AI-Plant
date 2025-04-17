@@ -83,6 +83,11 @@
         <view class="history-button-container">
             <button class="history-button" bindtap="goToHistory" type="primary">查看历史数据</button>
         </view>
+        
+        <!-- 控制页面按钮 -->
+        <view class="history-button-container">
+            <button class="history-button" bindtap="goToControl" type="primary">进入控制页面</button>
+        </view>
     </view>
 </scroll-view>
 

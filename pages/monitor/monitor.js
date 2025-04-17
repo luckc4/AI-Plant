@@ -126,6 +126,7 @@ Page({
     that.data.client.on("offline", function (errr) {
       console.log(" 服务器offline的回调")
     })
+    
   },
   
   // 卡片点击事件处理函数
@@ -242,6 +243,13 @@ Page({
   goToHistory: function() {
     wx.navigateTo({
       url: '/pages/history/history'
+    });
+  },
+  
+  // 跳转到控制页面
+  goToControl: function() {
+    wx.navigateTo({
+      url: '/pages/control/control'
     });
   },
 
