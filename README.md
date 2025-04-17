@@ -97,20 +97,31 @@ App({
 ### 2. AI 服务配置
 // pages/analysis/analysis.js
 ```javascript
-data: {
-    agentConfig: {
-      type: "bot", // 值为'bot'或'model'。当type='bot'时，botId必填；当type='model'时，modelName和model必填
-      botId: "bot-80e6ea14", // agent id
-      allowWebSearch: true, // 允许客户端选择启用联网搜索
-      allowUploadFile: true, // 允许上传文件
-      allowPullRefresh: true, // 允许下拉刷新
-      allowUploadImage: true
-    },
-  },
+agentConfig: {
+  type: "bot",
+  botId: "your-bot-id", 
+  modelName: "", 
+  model: "",
+  logo: "",
+  welcomeMessage: ""
+}
 ```
 
+**方式二：对接AI大模型**
 
-## 📁 项目结构
+```javascript
+agentConfig: {
+  type: "model",
+  botId: "", 
+  modelName: "hunyuan", // 可选：hunyuan, deepseek等
+  model: "hunyuan-lite", // 具体的模型版本
+  logo: "",
+  welcomeMessage: ""
+}
+```
+
+## 项目结构
+
 ```
 AI-Plant
 ├── components/          # 自定义组件
