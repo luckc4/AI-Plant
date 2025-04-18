@@ -61,6 +61,12 @@
     </swiper>
   </view>
   
+  <!-- 控制按钮区域 -->
+  <view class="control-buttons">
+    <button class="confirm-btn" bindtap="onConfirm">确认</button>
+    <button class="cancel-btn" bindtap="onCancel">取消</button>
+  </view>
+  
   <!-- 添加植物面板 -->
   <view class="plant-panel {{showAddPanel ? 'show' : ''}}">
     <view class="panel-title">选择植物</view>

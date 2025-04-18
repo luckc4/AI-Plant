@@ -315,3 +315,31 @@
   min-width: 50%;
   display: inline-block;
 }
+
+/* 控制按钮样式 */
+.control-buttons {
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0 30px;
+}
+
+.confirm-btn, .cancel-btn {
+  width: 40%;
+  height: 40px;
+  border-radius: 20px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirm-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #f44336;
+  color: white;
+}

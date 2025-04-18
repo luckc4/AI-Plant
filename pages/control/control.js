@@ -1,4 +1,9 @@
 // pages/control/control.js
+
+// 导入mqtt和aliyun连接配置
+import mqtt from '../../utils/mqtt.js';
+const aliyunOpt = require('../../utils/aliyun/aliyun_connect.js');
+
 Page({
 
   /**
@@ -29,7 +34,29 @@ Page({
       { name: '茉莉', image: '茉莉.png', type: 'flower' }
     ],
     
-    nextPlantId: 1 // 下一个植物ID
+    nextPlantId: 1, // 下一个植物ID
+
+    // MQTT 连接相关
+    client: null,
+    reconnectCounts: 0,
+    options: {
+      protocolVersion: 4,
+      clean: false,
+      reconnectPeriod: 1000,
+      connectTimeout: 30 * 1000,
+      resubscribe: true,
+      clientId: '',
+      password: '',
+      username: '',
+    },
+    aliyunInfo: {
+      productKey: "a10exP5nHAz",
+      deviceName: "WeChat",
+      deviceSecret: "3fd715b1f05214b4893f1db9fec3fde3",
+      regionId: 'cn-shanghai',
+      pubTopic: '/a10exP5nHAz/WeChat/user/WeChat',
+      subTopic: '/a1uej7IgjFk/weChat/user/get',
+    }
   },
 
   /**
@@ -59,6 +86,127 @@ Page({
     if (plants.length > 0) {
       this.selectPlant({currentTarget: {dataset: {index: 0}}});
     }
+
+    // 初始化MQTT连接
+    this.initMqttConnection();
+  },
+
+  // 初始化MQTT连接
+  initMqttConnection() {
+    let that = this;
+    let clientOpt = aliyunOpt.getAliyunIotMqttClient({
+      productKey: that.data.aliyunInfo.productKey,
+      deviceName: that.data.aliyunInfo.deviceName,
+      deviceSecret: that.data.aliyunInfo.deviceSecret,
+      regionId: that.data.aliyunInfo.regionId,
+      port: that.data.aliyunInfo.port,
+    });
+    
+    console.log("get data:" + JSON.stringify(clientOpt));
+    let host = 'wxs://' + clientOpt.host;
+    
+    this.setData({
+      'options.clientId': clientOpt.clientId,
+      'options.password': clientOpt.password,
+      'options.username': clientOpt.username,
+    })
+    
+    // 访问服务器
+    const client = mqtt.connect(host, this.data.options);
+    this.setData({ client: client });
+    
+    client.on('connect', function (connack) {
+      wx.showToast({
+        title: '连接成功'
+      })
+      console.log("连接成功");
+    });
+    
+    // 服务器连接异常的回调
+    client.on("error", function (error) {
+      console.log("服务器 error 的回调" + error)
+    });
+  },
+
+  // 发送命令函数
+  sendCommond(cmd, data) {
+    let sendData = {
+      // cmd: cmd,
+      data: data,
+    };
+    // 发布消息
+    if (this.data.client && this.data.client.connected) {
+      this.data.client.publish(this.data.aliyunInfo.pubTopic, JSON.stringify(sendData));
+      console.log("发送控制命令:", this.data.aliyunInfo.pubTopic);
+      console.log("发送数据:", JSON.stringify(sendData));
+      
+      wx.showToast({
+        title: '发送成功',
+        icon: 'success',
+        duration: 2000
+      });
+    } else {
+      wx.showToast({
+        title: '请先连接服务器',
+        icon: 'none',
+        duration: 2000
+      });
+    }
+  },
+
+  // 确认按钮点击事件
+  onConfirm() {
+    if (this.data.plants.length === 0 || this.data.currentIndex >= this.data.plants.length) {
+      wx.showToast({
+        title: '请先添加植物',
+        icon: 'none',
+        duration: 2000
+      });
+      return;
+    }
+    
+    // 获取当前选中的植物
+    const currentPlant = this.data.plants[this.data.currentIndex];
+    let controlCode = "a"; // 默认代码
+    
+    // 根据植物名称设置对应的控制代码
+    switch(currentPlant.name) {
+      case '菠菜':
+        controlCode = "b";
+        break;
+      case '大蒜':
+        controlCode = "b";
+        break;
+      case '萝卜':
+        controlCode = "d";
+        break;
+      case '玫瑰':
+        controlCode = "e";
+        break;
+      case '茉莉':
+        controlCode = "f";
+        break;
+      case '牡丹':
+        controlCode = "g";
+        break;
+      case '土豆':
+        controlCode = "h";
+        break;
+      case '月季':
+        controlCode = "i";
+        break;
+      default:
+        controlCode = "j";
+    }
+    
+    console.log("确认当前植物:", currentPlant.name, "控制代码:", controlCode);
+    this.sendCommond('set', controlCode);
+  },
+
+  // 取消按钮点击事件
+  onCancel() {
+    console.log("取消操作");
+    this.sendCommond('set', "0000");
   },
 
   // 返回上一页
