@@ -167,12 +167,12 @@ Page({
     
     // 获取当前选中的植物
     const currentPlant = this.data.plants[this.data.currentIndex];
-    let controlCode = "a"; // 默认代码
+    let controlCode = "m"; // 默认代码
     
     // 根据植物名称设置对应的控制代码
     switch(currentPlant.name) {
       case '菠菜':
-        controlCode = "b";
+        controlCode = "a";
         break;
       case '大蒜':
         controlCode = "b";
@@ -206,7 +206,7 @@ Page({
   // 取消按钮点击事件
   onCancel() {
     console.log("取消操作");
-    this.sendCommond('set', "0000");
+    this.sendCommond('set', "z");
   },
 
   // 返回上一页
