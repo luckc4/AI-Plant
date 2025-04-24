@@ -110,8 +110,8 @@ button{
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 30px;
+  margin-top: -20px;
+  margin-bottom: 0px;
 }
 
 .history-button {
@@ -119,6 +119,11 @@ button{
   font-size: 16px !important;
   padding: 12px 0;
   border-radius: 8px;
+}
+
+/* 控制页面按钮样式 */
+.control-button {
+  background-color: purple !important;
 }
 
 .scroll-container {

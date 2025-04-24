@@ -86,7 +86,7 @@
         
         <!-- 控制页面按钮 -->
         <view class="history-button-container">
-            <button class="history-button" bindtap="goToControl" type="primary">进入控制页面</button>
+            <button class="history-button control-button" bindtap="goToControl" type="primary">进入控制页面</button>
         </view>
     </view>
 </scroll-view>

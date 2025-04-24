@@ -13,7 +13,7 @@
 .page-title {
   font-size: 24px;
   font-weight: bold;
-  margin: 30px 0 20px;
+  margin: 0px 0 20px;
   color: #333;
 }
 
@@ -318,20 +318,24 @@
 
 /* 控制按钮样式 */
 .control-buttons {
-  width: 90%;
+  width: 100%;
   display: flex;
-  justify-content: space-around;
-  margin: 20px 0 30px;
+  justify-content: space-between;
+  padding: 0 40px;
+  margin: 10px 0 20px;
+  box-sizing: border-box;
 }
 
 .confirm-btn, .cancel-btn {
   width: 40%;
-  height: 40px;
-  border-radius: 20px;
-  font-size: 16px;
+  max-width: 120px;
+  height: 50px;
+  border-radius: 10px;
+  font-size: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .confirm-btn {
@@ -342,4 +346,130 @@
 .cancel-btn {
   background-color: #f44336;
   color: white;
+}
+
+/* 重置button默认样式 */
+button {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+}
+
+button::after {
+  border: none;
+}
+
+/* 信息按钮容器样式 */
+.info-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+/* 查看植物信息按钮样式 */
+.info-btn {
+  display: block;
+  width: 535rpx !important; /* 使用rpx单位，约等于300px */
+  /* min-width: 600rpx !important; */
+  /* max-width: 600rpx !important; */
+  height: 50px;
+  border-radius: 10px;
+  font-size: 16px;
+  text-align: center;
+  line-height: 50px;
+  background-color: #2196F3;
+  color: white;
+  margin: 0 auto 30px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  /* 确保没有任何内边距 */
+  padding: 0 !important;
+  /* 不要让文字换行 */
+  white-space: nowrap;
+}
+
+/* 植物信息表格样式 */
+.plant-info-table {
+  padding-bottom: 20px;
+}
+
+.table-scroll-view {
+  width: 100%;
+  white-space: nowrap;
+  margin-bottom: 20px;
+}
+
+.plant-table {
+  width: 700rpx; /* 设置一个固定宽度，确保表格可以水平滚动 */
+  min-width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: inline-block;
+}
+
+.table-header {
+  display: flex;
+  background-color: #f0f8ff;
+  font-weight: bold;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.table-row {
+  display: flex;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.table-row:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table-row:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.table-cell {
+  flex: 1;
+  padding: 12px 8px;
+  text-align: center;
+  font-size: 14px;
+  border-right: 1px solid #e0e0e0;
+  position: relative;
+  overflow: visible;
+  width: 100rpx;
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+.table-cell:last-child {
+  border-right: none;
+}
+
+.plant-name-cell {
+  flex: 0.8;
+  font-weight: bold;
+  background-color: #f0f8ff;
+  text-align: center;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+
+.unit {
+  font-size: 12px;
+  color: #666;
+  margin-left: 2px;
+  font-weight: normal;
+  position: relative;
+  top: -2px;
 }
