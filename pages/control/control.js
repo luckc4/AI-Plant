@@ -178,25 +178,25 @@ Page({
         controlCode = "b";
         break;
       case '萝卜':
-        controlCode = "d";
+        controlCode = "c";
         break;
       case '玫瑰':
-        controlCode = "e";
+        controlCode = "d";
         break;
       case '茉莉':
-        controlCode = "f";
+        controlCode = "e";
         break;
       case '牡丹':
-        controlCode = "g";
+        controlCode = "f";
         break;
       case '土豆':
-        controlCode = "h";
+        controlCode = "g";
         break;
       case '月季':
-        controlCode = "i";
+        controlCode = "h";
         break;
       default:
-        controlCode = "j";
+        controlCode = "i";
     }
     
     console.log("确认当前植物:", currentPlant.name, "控制代码:", controlCode);
@@ -207,6 +207,15 @@ Page({
   onCancel() {
     console.log("取消操作");
     this.sendCommond('set', "z");
+  },
+
+  // 查看植物信息按钮点击事件
+  showPlantInfo() {
+    this.setData({
+      showPlantInfoTable: true,
+      showAddPanel: false,
+      showRemovePanel: false
+    });
   },
 
   // 返回上一页
@@ -280,7 +289,8 @@ Page({
   hidePanel() {
     this.setData({
       showAddPanel: false,
-      showRemovePanel: false
+      showRemovePanel: false,
+      showPlantInfoTable: false
     });
   },
 

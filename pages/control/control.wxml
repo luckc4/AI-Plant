@@ -67,6 +67,11 @@
     <button class="cancel-btn" bindtap="onCancel">取消</button>
   </view>
   
+  <!-- 查看植物信息按钮 -->
+  <view class="info-button-container">
+    <button class="info-btn" bindtap="showPlantInfo">点击这里查看适合植物生长的环境</button>
+  </view>
+  
   <!-- 添加植物面板 -->
   <view class="plant-panel {{showAddPanel ? 'show' : ''}}">
     <view class="panel-title">选择植物</view>
@@ -110,6 +115,90 @@
     <view class="panel-close" bindtap="hidePanel">关闭</view>
   </view>
   
+  <!-- 植物信息表格面板 -->
+  <view class="plant-panel plant-info-table {{showPlantInfoTable ? 'show' : ''}}">
+    <view class="panel-title">植物生长适宜环境</view>
+    
+    <scroll-view scroll-x="true" class="table-scroll-view">
+      <view class="plant-table">
+        <view class="table-header">
+          <view class="table-cell plant-name-cell">植物</view>
+          <view class="table-cell">环境温度<text class="unit">°C</text></view>
+          <view class="table-cell">环境湿度<text class="unit">%</text></view>
+          <view class="table-cell">土壤湿度<text class="unit">RH</text></view>
+          <view class="table-cell">光照强度<text class="unit">Lux</text></view>
+          <view class="table-cell">CO₂浓度<text class="unit">ppm</text></view>
+        </view>
+        <view class="table-row">
+          <view class="table-cell plant-name-cell">菠菜</view>
+          <view class="table-cell">24</view>
+          <view class="table-cell">46</view>
+          <view class="table-cell">75</view>
+          <view class="table-cell">250</view>
+          <view class="table-cell">655</view>
+        </view>
+        <view class="table-row">
+          <view class="table-cell plant-name-cell">大蒜</view>
+          <view class="table-cell">27</view>
+          <view class="table-cell">52</view>
+          <view class="table-cell">64</view>
+          <view class="table-cell">450</view>
+          <view class="table-cell">552</view>
+        </view>
+        <view class="table-row">
+          <view class="table-cell plant-name-cell">萝卜</view>
+          <view class="table-cell">18</view>
+          <view class="table-cell">55</view>
+          <view class="table-cell">72</view>
+          <view class="table-cell">350</view>
+          <view class="table-cell">646</view>
+        </view>
+        <view class="table-row">
+          <view class="table-cell plant-name-cell">玫瑰</view>
+          <view class="table-cell">31</view>
+          <view class="table-cell">63</view>
+          <view class="table-cell">81</view>
+          <view class="table-cell">750</view>
+          <view class="table-cell">781</view>
+        </view>
+        <view class="table-row">
+          <view class="table-cell plant-name-cell">茉莉</view>
+          <view class="table-cell">33</view>
+          <view class="table-cell">71</view>
+          <view class="table-cell">71</view>
+          <view class="table-cell">550</view>
+          <view class="table-cell">775</view>
+        </view>
+        <view class="table-row">
+          <view class="table-cell plant-name-cell">牡丹</view>
+          <view class="table-cell">21</view>
+          <view class="table-cell">59</view>
+          <view class="table-cell">65</view>
+          <view class="table-cell">650</view>
+          <view class="table-cell">586</view>
+        </view>
+        <view class="table-row">
+          <view class="table-cell plant-name-cell">土豆</view>
+          <view class="table-cell">26</view>
+          <view class="table-cell">70</view>
+          <view class="table-cell">67</view>
+          <view class="table-cell">450</view>
+          <view class="table-cell">646</view>
+        </view>
+        <view class="table-row">
+          <view class="table-cell plant-name-cell">月季</view>
+          <view class="table-cell">30</view>
+          <view class="table-cell">55</view>
+          <view class="table-cell">71</view>
+          <view class="table-cell">750</view>
+          <view class="table-cell">712</view>
+        </view>
+      </view>
+    </scroll-view>
+    
+    <view class="panel-close" bindtap="hidePanel">关闭</view>
+  </view>
+  
   <!-- 遮罩层 -->
-  <view class="mask" wx:if="{{showAddPanel || showRemovePanel}}" bindtap="hidePanel"></view>
+  <view class="mask" wx:if="{{showAddPanel || showRemovePanel || showPlantInfoTable}}" bindtap="hidePanel"></view>
 </view>
