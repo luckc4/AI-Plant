@@ -2,7 +2,7 @@ import MarkdownIt from './utils/markdown-it.min.js';
 import highlight from './utils/highlight.min.js';
 import hljsJs from './utils/hljs_javascript.min.js';
 import hljsCss from './utils/hljs_css.min.js';
-import { addCustomClassPlugin } from './utils/plugin'
+import { addCustomClassPlugin,copy } from './utils/plugin'
 Component({
   options: {
     virtualHost: true,
@@ -63,6 +63,7 @@ Component({
         ...options,
       });
       // console.log(md.renderer.rules)
+      md.use(copy);
       addCustomClassPlugin(md)
       this.setData({ mdInstance: md });
       this.triggerEvent('onReady', { markdownInstance: md });
@@ -83,8 +84,9 @@ Component({
     markdown: function () {
       const { mdInstance } = this.data;
       if (!mdInstance) return;
+      // console.log('*****markdown', this.data.markdown)
       const html = mdInstance.render(this.data.markdown)
-      // console.log(html)
+      // console.log('*****((((((',html)
       this.setData({
         __html: html,
       });

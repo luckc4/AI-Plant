@@ -1,6 +1,6 @@
 {
   "usingComponents": {
+    "navigation-bar": "/components/navigation-bar/navigation-bar",
     "agent-ui":"/components/agent-ui/index"
-  },
-  "enablePullDownRefresh": true
+  }
 }

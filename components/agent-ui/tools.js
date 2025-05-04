@@ -1,121 +1,157 @@
-
-export const guide = `agent ui组件配置不正确，请参照使用说明进行配置。
-
-## 使用说明
-
-### 1、前置条件
-
-#### 1.1、开通微信云开发
-agent ui 小程序组件依赖微信云开发 AI 服务，需要开通微信云开发服务。
-
-开通方式
-
-![](https://qcloudimg.tencent-cloud.cn/raw/f06ca4761f54ecc8ed8d9644229c92f9.png)
-
-如已开通微信云开发服务，请跳转至云开发平台(\`https://tcb.cloud.tencent.com/dev\`)创建AI服务。
-
-#### 1.2、创建AI服务
-- 方式一：直接使用agent智能体服务
- ![](https://qcloudimg.tencent-cloud.cn/raw/97786aaaa15aa1f23e9bbd39a7a6762f.png)
-
-- 方式二：接入大模型
- ![](https://qcloudimg.tencent-cloud.cn/raw/876d2238b5331a7bdcbd91a1b38b8248.png)
-
-### 2、配置 agent ui 小程序组件
-#### 2.1、配置云开发环境ID
-打开\`miniprogram/app.js\`文件，配置云开发环境ID。
-\`\`\`js
-App({
-  onLaunch: function () {
-    if (!wx.cloud) {
-      console.error("请使用 2.2.3 或以上的基础库以使用云能力");
-    } else {
-      wx.cloud.init({
-        env: "",// 环境id
-        traceUser: true,
-      });
+export const checkConfig = (chatMode, agentConfig, modelConfig) => {
+  const { botId } = agentConfig || {};
+  const { modelProvider, quickResponseModel, deepReasoningModel } = modelConfig || {};
+  // 检测不在微信环境，提示用户
+  const appBaseInfo = wx.getAppBaseInfo();
+  try {
+    const systemInfo = wx.getSystemInfoSync();
+    // console.log('systemInfo', systemInfo)
+    if (systemInfo.environment === "wxwork") {
+      return [false, "请前往微信客户端扫码打开小程序"];
     }
+  } catch (e) {
+    // console.log('getSystemInfoSync 接口废弃')
+    // 使用 getAppBaseInfo 兜底
+    // console.log('appBaseInfo', appBaseInfo)
+    if (appBaseInfo.host.env === "SDK") {
+      return [false, "请前往微信客户端扫码打开小程序"];
+    }
+  }
 
-    this.globalData = {};
-  },
-});
-\`\`\`
-#### 2.1、 agent ui 小程序组件配置
-打开小程序\`miniprogram/pages/index/index.js\`文件，配置 agent ui 小程序组件。
-
-组件参数说明如下：
-
-| 参数名称  | 参数说明         | 参数类型 | 是否必填 | 默认值 |
-| --------- | ---------------- | -------- | -------- | ------ |
-| type      | 对接ai服务类型   | String   | 是       | -      |
-| botId     | agent ID         | String   | 否       | -      |
-| modelName | ai大模型服务商   | String   | 否       | -      |
-| model     | 具体使用的大模型 | String   | 否       | -      |
-| logo     | 图标 | String   | 否       | -      |
-| welcomeMessage     | 欢迎语 | String   | 否       | -      |
-
-对接 agent 服务时，type 为 bot，botId 必填，配置如下：
-\`\`\`js
-agentConfig: {
-      type: "bot",
-      botId: "bot-e7d1e736", 
-      modelName: "", 
-      model:"",
-      logo:"",
-      welcomeMessage:""
-    } 
-\`\`\`
-对接 ai 大模型服务时，type 为 model，modelName 和 modelName必填，配置如下：
-\`\`\`js
-agentConfig: {
-      type: "model",
-      botId: "", 
-      modelName: "hunyuan", 
-      model:"hunyuan-lite",
-      logo:"",
-      welcomeMessage:"" 
-    } 
-\`\`\`
-`;
-export const checkConfig = (config) => {
-  const { type, botId, modelName, model } = config
   // 检测AI能力，不存在提示用户
-  if(!wx.cloud.extend||!wx.cloud.extend.AI){
-    return [false,'使用AI能力需基础库为3.7.7及以上，请升级基础库版本或微信客户端']
+  if (compareVersions(appBaseInfo.SDKVersion, "3.7.7") < 0) {
+    return [false, "使用AI能力需基础库为3.7.7及以上，请升级基础库版本或微信客户端"];
   }
-  if (!['bot', 'model'].includes(type)) {
-    return [false, 'type 不正确，值应为“bot”或“model”']
+  if (!["bot", "model"].includes(chatMode)) {
+    return [false, "chatMode 不正确，值应为“bot”或“model”"];
   }
-  if (type === 'bot' && !botId) {
-    return [false, '当前type值为bot，请配置botId']
+  if (chatMode === "bot" && !botId) {
+    return [false, "当前chatMode值为bot，请配置botId"];
   }
-  if (type === 'model' && (!modelName || !model)) {
-    return [false, '当前type值为model，请配置modelNam和model']
+  if (chatMode === "model" && (!modelProvider || !quickResponseModel)) {
+    return [false, "当前chatMode值为model，请配置modelProvider和quickResponseModel"];
   }
-  return [true, '']
-}
+  return [true, ""];
+};
 // 随机选取三个问题
-export function randomSelectInitquestion(question=[],num=3){
-  if(question.length<=num){
-    return [...question]
+export function randomSelectInitquestion(question = [], num = 3) {
+  if (question.length <= num) {
+    return [...question];
   }
-  const set=new Set();
-  while(set.size<num){
-    const randomIndex=Math.floor(Math.random()*question.length)
-    set.add(question[randomIndex])
+  const set = new Set();
+  while (set.size < num) {
+    const randomIndex = Math.floor(Math.random() * question.length);
+    set.add(question[randomIndex]);
   }
-  return Array.from(set)
+  return Array.from(set);
 }
-function Throttle(){
-  let timer=null
-  return function(fn){
-    if(!timer){
-      timer=setTimeout(()=>{
-        fn()
-        timer=null
-      },50)
+
+export const getCloudInstance = (function () {
+  let cloudInstance = null;
+  return async function (envShareConfig) {
+    if (cloudInstance) {
+      return cloudInstance;
+    }
+    // 如果开启了环境共享，走环境共享的ai实例
+    if (envShareConfig && envShareConfig.resourceAppid && envShareConfig.resourceEnv) {
+      let instance = new wx.cloud.Cloud({
+        // 资源方 AppID
+        resourceAppid: envShareConfig.resourceAppid,
+        // 资源方环境 ID
+        resourceEnv: envShareConfig.resourceEnv,
+      });
+      await instance.init();
+      // 烦，环境共享时创建实例，没有把环境id挂在instance上，这里手动挂上去，如果你发现instance上有个env，那么这个insatnce就是环境共享的云开发实例
+      instance.env = envShareConfig.resourceEnv;
+      cloudInstance = instance;
+      return cloudInstance;
+    } else {
+      cloudInstance = wx.cloud;
+      return cloudInstance;
+    }
+  };
+})();
+
+export const compareVersions = (version1, version2) => {
+  const v1Parts = version1.split(".").map(Number);
+  const v2Parts = version2.split(".").map(Number);
+  const maxLength = Math.max(v1Parts.length, v2Parts.length);
+
+  for (let i = 0; i < maxLength; i++) {
+    const num1 = v1Parts[i] || 0;
+    const num2 = v2Parts[i] || 0;
+
+    if (num1 > num2) {
+      return 1;
+    } else if (num1 < num2) {
+      return -1;
     }
   }
-}
-// 频繁渲染会阻塞UI线程，这里节流一下
- export const ThrottleFn= Throttle()
+  return 0;
+};
+
+let isDomainWarn = false;
+
+export const commonRequest = async (options) => {
+  const cloudInstance = await getCloudInstance();
+  const self = this;
+  // 判断 当前sdk 版本是否 小于 3.8.1
+  const appBaseInfo = wx.getAppBaseInfo();
+  console.log("当前版本", appBaseInfo.SDKVersion);
+  const { path } = options;
+  if (compareVersions(appBaseInfo.SDKVersion, "3.8.1") < 0) {
+    console.log("走wx request");
+    const cloudInstance = await getCloudInstance();
+    const { token } = await cloudInstance.extend.AI.bot.tokenManager.getToken();
+    const envId = cloudInstance.env || cloudInstance.extend.AI.bot.context.env;
+    console.log("envId", envId);
+    return wx.request({
+      ...options,
+      path: undefined,
+      url: `https://${envId}.api.tcloudbasegateway.com/v1/aibot/${path}`,
+      header: {
+        ...options.header,
+        Authorization: `Bearer ${token}`,
+      },
+      fail: (e) => {
+        if (options.fail) {
+          options.fail.bind(self)(e);
+          if (e.errno === 600002 || e.errMsg.includes("url not in domain list")) {
+            // const { url } = options;
+            let msg = `请前往微信公众平台 request 合法域名配置中添加云开发域名 https://${envId}.api.tcloudbasegateway.com`;
+            // if (url) {
+            //   const regex = /^(https?:\/\/[^/?#]+)/i;
+            //   const matches = url.match(regex);
+            //   console.log("matches", matches);
+            //   if (matches[1]) {
+            //     msg = `请前往微信公众平台 request 合法域名配置中添加云开发域名 ${matches[1]}`;
+            //   }
+            // }
+            if (!isDomainWarn) {
+              isDomainWarn = true;
+              wx.showModal({
+                title: "提示",
+                content: msg,
+                complete: () => {
+                  isDomainWarn = false;
+                },
+              });
+            }
+          }
+        }
+      },
+    });
+  } else {
+    console.log("走内部request");
+    const ai = cloudInstance.extend.AI;
+    return ai.request(options);
+  }
+};
+
+export const sleep = (timeout) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, timeout);
+  });
+};

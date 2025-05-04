@@ -1,29 +1,35 @@
-// pages/analysis/analysis.js
+// pages/chatBot/chatBot.js
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    
-    
+    chatMode: "bot", // bot 表示使用agent，model 表示使用大模型
+    showBotAvatar: true, // 是否在对话框左侧显示头像
+    // envShareConfig: {
+    //   // 不使用环境共享，请删除此配置或配置EnvShareConfig:null
+    //   // 资源方 AppID
+    //   resourceAppid: "wx7ac1bfecc7bf5f4f",
+    //   // 资源方环境 ID
+    //   resourceEnv: "chriscc-demo-7ghlpjf846d46d2d",
+    // },
     agentConfig: {
-      type: "bot", // 值为'bot'或'model'。当type='bot'时，botId必填；当type='model'时，modelName和model必填
-      botId: "bot-80e6ea14", // agent id
+      botId: "bot-80e6ea14", // agent id,
       allowWebSearch: true, // 允许客户端选择启用联网搜索
       allowUploadFile: true, // 允许上传文件
       allowPullRefresh: true, // 允许下拉刷新
-      allowUploadImage: true
+      allowUploadImage: true, // 允许上传图片
+      showToolCallDetail: true, // 展示 toolCall 细节
+      allowMultiConversation: true,
+      allowVoice: true
+    },
+    modelConfig: {
+      modelProvider: "deepseek", // 大模型服务厂商
+      quickResponseModel: "deepseek-v3", // 快速响应模型 （混元 turbo, gpt4 turbo版，deepseek v3等）
+      logo: "", // model 头像
+      welcomeMsg: "欢迎语", // model 欢迎语
     },
   },
-
-  // modelName: "hunyuan-open", // 大模型服务商
-  // model: "hunyuan-lite", // 具体的模型版本
-
-  // modelName: "deepseek", // 大模型服务商
-  // model: "deepseek-r1", // 具体的模型版本
-
-  // modelName: "deepseek", // 大模型服务商
-  // model: "deepseek-v3", // 具体的模型版本
   /**
    * 生命周期函数--监听页面加载
    */
