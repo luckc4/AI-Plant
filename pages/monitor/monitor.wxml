@@ -84,6 +84,11 @@
             <button class="history-button" bindtap="goToHistory" type="primary">查看历史数据</button>
         </view>
         
+        <!-- 查看生长监控按钮 -->
+        <view class="history-button-container">
+            <button class="history-button" bindtap="goToGrowthMonitor" type="primary">查看生长监控</button>
+        </view>
+
         <!-- 控制页面按钮 -->
         <view class="history-button-container">
             <button class="history-button control-button" bindtap="goToControl" type="primary">进入控制页面</button>

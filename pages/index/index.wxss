@@ -302,3 +302,72 @@ page {
   margin-top: 60rpx;
   font-weight: bold;
 }
+
+/* 新增项目介绍卡片样式 */
+.project-intro-card {
+  background-color: #ffffff;
+  border-radius: 30rpx;
+  margin: 30rpx 20rpx;
+  padding: 40rpx 30rpx;
+  box-shadow: 0 8rpx 20rpx rgba(0, 0, 0, 0.08);
+}
+
+.project-title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.section-block {
+  margin-bottom: 30rpx;
+}
+
+.section-block:last-of-type {
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #2F80ED;
+  margin-bottom: 15rpx;
+  padding-left: 10rpx;
+  border-left: 6rpx solid #2F80ED;
+  line-height: 1.2;
+}
+
+.intro-paragraph {
+  font-size: 28rpx;
+  color: #555555;
+  line-height: 1.8;
+  text-align: justify;
+  white-space: pre-line; /* 保留换行符 */
+}
+
+.intro-paragraph .bold-text {
+  font-weight: 600;
+  color: #333333;
+}
+
+.intro-logo-container {
+  text-align: center;
+  margin: 30rpx 0;
+}
+
+.intro-logo-image {
+  width: 60%; /* 相对于父容器的宽度，您可以调整这个值 */
+  max-width: 400rpx; /* 最大宽度，避免过大 */
+  height: auto; /* 高度自适应 */
+  /* transform: scale(1.5); /* 图片放大1.5倍，如果通过width控制，这个可以不用 */
+}
+
+.attribution-text {
+  font-size: 24rpx;
+  color: #888888;
+  text-align: center;
+  margin-top: 40rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #eeeeee;
+}

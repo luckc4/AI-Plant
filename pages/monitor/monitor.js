@@ -36,7 +36,7 @@ Page({
         deviceSecret: "3fd715b1f05214b4893f1db9fec3fde3",
         regionId: 'cn-shanghai', //阿里云连接的三元组 ，请自己替代为自己的产品信息!!
         pubTopic: '/a10exP5nHAz/WeChat/user/WeChat', //发布消息的主题
-        subTopic: '/a1uej7IgjFk/weChat/user/get', //订阅消息的主题
+        subTopic: '/auej7IgjFk/weChat/user/get', //订阅消息的主题
         
       },
     },
@@ -243,6 +243,26 @@ Page({
   goToHistory: function() {
     wx.navigateTo({
       url: '/pages/history/history'
+    });
+  },
+  
+  // 新增：跳转到生长监控处理 (实际是复制链接并提示)
+  goToGrowthMonitor: function() {
+    wx.setClipboardData({
+      data: 'https://www.baidu.com',
+      success: function () {
+        wx.showToast({
+          title: '个人版注册的小程序不支持网页跳转，以为您复制网址，请到浏览器中打开',
+          icon: 'none',
+          duration: 3000 // 提示持续时间，单位毫秒
+        });
+      },
+      fail: function () {
+        wx.showToast({
+          title: '复制失败，请重试',
+          icon: 'none'
+        });
+      }
     });
   },
   

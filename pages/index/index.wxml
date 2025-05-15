@@ -22,6 +22,48 @@
     </view>
   </view>
 
+  <!-- 项目介绍卡片 -->
+  <view class="project-intro-card">
+    <view class="project-title">懒人绿洲</view>
+
+    <view class="section-block">
+      <view class="section-title">项目背景</view>
+      <view class="intro-paragraph">
+        当今社会快节奏生活方式下，人们压力增大，而美丽的植物恰好能提供人们心灵的慰藉，尤其是自己亲手培育的绿植。
+        同时室内植物能改善生活环境、净化空气、缓解压力。但许多人因缺乏专业知识和持续关注而导致植物生长状况不佳。
+        懒人绿洲正是针对这一痛点，将先进技术与植物学知识相结合，降低植物养护门槛，提高生活幸福度。
+      </view>
+    </view>
+
+    <view class="section-block">
+      <view class="section-title">技术创新</view>
+      <view class="intro-paragraph">
+        引入天气系统，可以及时根据当前天气和未来天气，调整植物培养箱中传感器数值，改变温湿度，CO₂浓度，光照强度，土壤湿度。
+        我们致力于提供可视化的数据界面，支持自定义植物培养参数，实现植物生长的全程可视化。此外，项目还引用了先进的大模型技术，为用户提供更智能的养护建议。
+      </view>
+    </view>
+    
+    <!-- Logo图片 -->
+    <view class="intro-logo-container">
+      <image src="/images/logo.png" mode="widthFix" class="intro-logo-image" />
+    </view>
+
+    <view class="section-block">
+      <view class="section-title">核心优势</view>
+      <view class="intro-paragraph">
+        • <text class="bold-text">智能环控：</text>根据天气及植物需求自动调节环境参数。\n
+        • <text class="bold-text">数据驱动：</text>清晰展示植物生长数据，辅助决策。\n
+        • <text class="bold-text">个性定制：</text>满足不同植物的特殊养护需求。\n
+        • <text class="bold-text">生长可视：</text>直观了解植物状态，增加养护乐趣。\n
+        • <text class="bold-text">AI赋能：</text>集成大模型，提供专业养护指导。
+      </view>
+    </view>
+
+    <view class="attribution-text">
+      此项目由洛阳师范学院参赛人员提供
+    </view>
+  </view>
+
   <view class="forecast-section">
     <!-- 24小时预报 -->
     <view class="forecast-header" bindtap="toggleHourly">
@@ -62,77 +104,5 @@
         </block>
       </view>
     </view>
-  </view>
-  
-  <!-- Logo区域 -->
-  <view class="logo-container">
-    <image src="{{logo}}" mode="aspectFit" class="logo-image" />
-  </view>
-
-  <!-- 轮播图 -->
-  <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="500" circular="true">
-    <block wx:for="{{bannerImages}}" wx:key="*this">
-      <swiper-item>
-        <image src="{{item}}" mode="aspectFill" class="banner-image" />
-      </swiper-item>
-    </block>
-  </swiper>
-  
-  
-  
-  <!-- 文章标题 -->
-  <view class="article-title">{{title}}</view>
-  
-  <!-- 文章内容 -->
-  <view class="article-content">
-    <view class="feature-section">
-      <view class="feature-title">▍CO₂浓度智能调节</view>
-      <view class="feature-text">实时监测箱内二氧化碳水平，自动补充或循环气体，模拟自然光合作用环境，加速植物代谢效率，尤其适用于高附加值作物（如草药、蔬果）的精细化培育。</view>
-    </view>
-    
-    <view class="feature-section">
-      <view class="feature-title">▍多光谱动态光照系统</view>
-      <view class="feature-text">预设12种专业光配方（红/蓝/全光谱自由组合），0-50000Lux无极调光，匹配不同生长阶段需求：幼苗期柔光护根，生长期强光促壮，花期定向补光，让多肉紧凑上色、兰花精准催蕾。</view>
-    </view>
-    
-    <view class="feature-section">
-      <view class="feature-title">▍三温区独立控温</view>
-      <view class="feature-text">箱体分层设计，顶部/中部/底部独立温控（5℃-45℃宽域调节），满足根系保暖、茎叶舒展、花果发育的差异化需求。热带植物越冬、高山物种度夏，一键切换生长季。</view>
-    </view>
-    
-    <view class="feature-section">
-      <view class="feature-title">▍双模湿度协同管理</view>
-      <view class="feature-text">
-        <view>• <text class="bold-text">环境湿度</text>：超声波雾化+冷凝除湿双模联动，维持45%-95%RH稳定湿度，避免叶面灼伤或霉菌滋生</view>
-        <view>• <text class="bold-text">土壤湿度</text>：电容式传感探头精准识别含水率，AI学习浇水习惯，微滴灌系统按需补水，杜绝烂根风险</view>
-      </view>
-    </view>
-    
-    <view class="feature-section">
-      <view class="feature-title">▍四维空气流场设计</view>
-      <view class="feature-text">8组可编程风扇矩阵，支持0-10级风速调节。循环模式均匀分布温湿度，强排模式快速降温除湿，静默模式呵护幼苗，配合顶部对流孔洞设计，还原自然风的流动韵律。</view>
-    </view>
-    
-    <view class="feature-section">
-      <view class="feature-title">▍数据可视 + 智能互联</view>
-      <view class="feature-text">
-        <view>4英寸触控屏实时显示6项核心参数曲线，支持历史数据回溯。绑定App后：</view>
-        <view class="check-item">✓ 接收土壤干燥/设备异常推送</view>
-        <view class="check-item">✓ 云端同步200+种植物生长方案</view>
-        <view class="check-item">✓ 自定义DIY培育实验参数</view>
-        <view class="check-item">✓ 生成月度生长效能报告</view>
-      </view>
-    </view>
-    
-    <view class="feature-section">
-      <view class="feature-title">>> 适用场景</view>
-      <view class="feature-text">
-        <view>• <text class="bold-text">家庭园艺</text>：轻松培育珍稀绿植/食用香草/微型蔬菜</view>
-        <view>• <text class="bold-text">教育科研</text>：学生观察植物生理实验，科研人员表型组学研究</view>
-        <view>• <text class="bold-text">商业种植</text>：育苗工厂精准控本，精品咖啡豆发酵环境模拟</view>
-      </view>
-    </view>
-    
-    <view class="footer-text">【智能植物培养箱】——用实验室级的环境控制技术，让专业级种植走进每个热爱生命的家。</view>
   </view>
 </scroll-view>
